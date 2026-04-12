@@ -1,0 +1,134 @@
+/* ─────────────────────────────────────────
+    FEATURED SPEAKERS SECTION
+───────────────────────────────────────── */
+.speakers {
+  padding: 80px 0;
+  background: #111;
+  color: #fff;
+  overflow: hidden; /* Prevents horizontal scroll if cards peek out */
+}
+
+.speakers-inner {
+  max-width: 1400px; /* Increased to accommodate wider cards */
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Card Stage ── */
+.sp-stage {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+/* ── Individual Card ── */
+.sp-card {
+  border-radius: 0;
+  overflow: hidden;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: border-color 0.25s, box-shadow 0.25s;
+  position: relative;
+}
+
+.sp-card--active {
+  border-color: color-mix(in srgb, var(--card-color) 60%, transparent);
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--card-color) 20%, transparent);
+}
+
+/* ── Photo area ── */
+.sp-photo {
+  width: 100%;
+  background: color-mix(in srgb, var(--card-color) 25%, #1a1a1a);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sp-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Initials Fallback */
+.sp-initials {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: color-mix(in srgb, var(--card-color) 90%, white);
+  z-index: 1;
+}
+
+/* ── Nameplate ── */
+.sp-nameplate {
+  padding: 0;
+  background: #1c1c1c;
+  cursor: pointer;
+}
+
+.sp-nameplate-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 12px;
+}
+
+.sp-nameplate-text strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.sp-nameplate-text em {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: normal;
+}
+
+.sp-nameplate-bar {
+  height: 4px;
+  background: linear-gradient(90deg, var(--card-color), var(--card-accent));
+}
+
+/* ── Social Buttons ── */
+.sp-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: background 0.2s;
+}
+
+.sp-social-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Navigation Arrows ── */
+.nav-arrow {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.nav-arrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #fff;
+  transform: scale(1.1);
+}

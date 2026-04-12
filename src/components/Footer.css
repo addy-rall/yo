@@ -1,0 +1,239 @@
+.footer {
+  background: #080808;
+  border-top: 1px solid var(--border);
+  padding: 80px 24px 40px;
+}
+
+.footer-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+  gap: 80px;
+  margin-bottom: 60px;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 16px;
+}
+.footer-logo .red { color: var(--red); }
+
+.footer-tagline {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  max-width: 300px;
+  margin-bottom: 28px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+.social-icon {
+  width: 36px; height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.social-icon:hover {
+  border-color: var(--red);
+  color: var(--red);
+  background: rgba(230,43,30,0.1);
+}
+
+.footer-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.footer-col h4 {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 12px; }
+.footer-col a {
+  color: var(--muted);
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--red); }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-bottom p {
+  font-size: 0.75rem;
+  color: #444;
+}
+.footer-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.footer-nav a {
+  font-size: 0.75rem;
+  color: #444;
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--red); }
+.footer-nav span { color: #333; }
+
+@media (max-width: 768px) {
+  .footer-top { grid-template-columns: 1fr; gap: 48px; }
+  .footer-cols { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+.footer-map-col {
+  min-width: 250px;
+}
+
+.map-container {
+  margin-top: 15px;
+  background: #1a1a1a;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid #333;
+}
+
+.map-text {
+  font-size: 11px;
+  color: #888;
+  margin-top: 8px;
+  padding: 0 5px;
+}
+
+/* Ensure responsiveness on smaller screens */
+@media (max-width: 768px) {
+  .footer-cols {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .footer-map-col {
+    grid-column: span 2;
+  }
+}
+
+.footer-logo .red {
+  color: #e62b1e;
+  font-weight: bold;
+}
+/* Styling the TEDx Logo */
+.footer-logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: -1px;
+}
+
+/* The small red 'x' */
+.ted-x {
+  color: #e62b1e;
+  font-size: 0.75em; /* Makes the x smaller than TED and BBAU */
+  vertical-align: top; /* Optional: keeps it aligned to the top */
+  margin: 0 1px;
+}
+
+.footer-map-col {
+  min-width: 280px;
+}
+
+.map-container {
+  margin-top: 15px;
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #333;
+}
+
+/* Custom styling to make the free map look dark */
+.map-container iframe {
+  display: block;
+  /* This filter creates a premium dark-mode look for OpenStreetMap */
+  filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+.map-text {
+  font-size: 11px;
+  color: #666;
+  padding: 8px;
+  margin: 0;
+  background: #1a1a1a;
+  text-align: left;
+}
+/* Styling the TEDxBBAU Logo in Red and White */
+.footer-logo {
+  /* Using a specific bold font to match the image structure */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 2.2rem; /* Increased size to look like a prominent logo */
+  font-weight: 700; /* Extra bold to match the image */
+  color: #fff; /* TED and BBAU in white */
+  text-decoration: none;
+  letter-spacing: -1px; /* Matches the tight letter-spacing in the image */
+  display: flex; /* Helps with vertical alignment of the text parts */
+  align-items: center; /* Aligns all characters on the same visual line */
+  text-transform: uppercase; /* Ensures all letters are uppercase */
+}
+
+/* The small red 'x' */
+.ted-x {
+  color: #e62b1e; /* Specific TED red */
+  
+  /* Key Changes: making the x have a uniform scale with other letters */
+  font-size: 0.85em; /* Slightly smaller but not tiny like the raised one */
+  vertical-align: middle; /* Keeps it perfectly centered horizontally with T, E, D */
+  margin: 0 -1px; /* Tighter margins to flow with the text, matches spacing */
+  line-height: 1; /* Helps maintain the uniform height feel */
+}
+
+/* Rest of the footer styles (remain the same) */
+.footer-map-col {
+  min-width: 280px;
+}
+
+.map-container {
+  margin-top: 15px;
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #333;
+}
+
+.map-container iframe {
+  display: block;
+  filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+.map-text {
+  font-size: 11px;
+  color: #666;
+  padding: 8px;
+  margin: 0;
+  background: #1a1a1a;
+  text-align: left;
+}

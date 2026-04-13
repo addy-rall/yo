@@ -534,7 +534,7 @@ export default function RefundPolicy() {
             </p>
             <div style={styles.steps}>
               {[
-                { title: "Email Us", desc: "Contact us at contact@tedxamu.in with your booking details and the reason for your request." },
+                { title: "Email Us", desc: "Contact us at tedxbbau@gmail.com with your booking details and the reason for your request." },
                 { title: "Wait for Review", desc: "Our team will review your request and verify your eligibility based on the cancellation window." },
                 { title: "Refund Processed", desc: "Eligible refunds will be processed within 14 business days of approval." },
               ].map(({ title, desc }, i) => (

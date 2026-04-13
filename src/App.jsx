@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import CursorFX from './components/CursorFX'
 import Hero from './components/Hero'
 import WhatIsTedx from './components/WhatIsTedx'
 import FeaturedSpeakers from './components/FeaturedSpeakers'
@@ -40,6 +41,7 @@ export default function App() {
     <BrowserRouter>
       <div className="app">
         <Navbar />
+        <CursorFX />
         <Routes>
           <Route path="/" element={<Home />} />
          <Route path="/tedxbbau2025" element={<TEDx2025 />} />

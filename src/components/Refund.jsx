@@ -564,15 +564,15 @@ export default function RefundPolicy() {
               <div style={styles.contactCardAccent} />
               <div style={{ marginBottom: "20px" }}>
                 <p style={styles.contactLabel}>Refund Enquiries</p>
-                <a href="mailto:contact@tedxamu.in" style={styles.contactLink}>
-                  contact@tedxamu.in
+                <a href="mailto: tedxbbau@gmail.com" style={styles.contactLink}>
+                  tedxbbau@gmail.com
                 </a>
               </div>
               <div>
                 <p style={styles.contactLabel}>Address</p>
                 <p style={styles.contactValue}>
-                  Aligarh Muslim University,<br />
-                  Aligarh, Uttar Pradesh, India
+                  Babasaheb Bhimrao Ambedkar University University,<br />
+                  Lucknow, Uttar Pradesh, India
                 </p>
               </div>
             </div>

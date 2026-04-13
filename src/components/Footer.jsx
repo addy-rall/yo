@@ -3,7 +3,7 @@ import './Footer.css'
 
 const quickLinks = [
   { label: 'About', path: '/#about' },
-  { label: 'Speakers', path: '/#speakers' },
+  { label: 'Speakers', path: '/speakers' },
   { label: 'Sponsors', path: '/sponsors' },
   { label: 'Team', path: '/#team' },
   { label: 'Contact', path: '/contact' },

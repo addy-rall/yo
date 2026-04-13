@@ -27,6 +27,15 @@ export default function CursorFX() {
 
   /* ── Spiral cursor trail (mouse + touch) ── */
   useEffect(() => {
+    // Force hide cursor via injected style — more reliable than App.css alone
+    const styleTag = document.createElement('style')
+    styleTag.id = 'cursor-none-global'
+    styleTag.textContent = `
+      *, *::before, *::after { cursor: none !important; }
+      iframe, video { cursor: auto !important; }
+    `
+    document.head.appendChild(styleTag)
+
     const canvas = document.createElement('canvas')
     canvas.style.cssText = `position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;`
     document.body.appendChild(canvas)
@@ -107,6 +116,7 @@ export default function CursorFX() {
       window.removeEventListener('resize', resize)
       cancelAnimationFrame(frameRef.current)
       canvas.remove()
+      styleTag.remove()
     }
   }, [])
 

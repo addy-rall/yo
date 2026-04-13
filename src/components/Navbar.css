@@ -195,3 +195,9 @@
   height: 80px;
   flex-shrink: 0;
 }
+.navbar,
+.navbar *,
+.navbar *::before,
+.navbar *::after {
+  cursor: none !important;
+}

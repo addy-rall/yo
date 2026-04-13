@@ -10,7 +10,7 @@ import image1 from '../assets/image1.png';
 const speakers = [
   { id: '01', name: 'Vijendra Chauhan', role: 'AI Researcher', org: 'IIT Delhi', img: arjunImg, bio: 'A pioneering researcher in ethical AI with 15+ years of experience at leading tech institutions.', color: '#e62b1e' },
   { id: '02', name: 'Gajendra Purohit', role: 'Entrepreneur', org: 'FutureTech Labs', img: nadiaImg, bio: 'Serial entrepreneur and author. Mentored 8,000+ students through startup programmes.', color: '#e62b1e' },
-  { id: '03', name: 'Dr. Nadia Khan', role: 'Neuroscientist', org: 'AIIMS Delhi', img: rahulImg, bio: 'Renowned for research on memory. TED talk has over 4 million views.', color: '#e62b1e' },
+  { id: '03', name: 'speaker3', role: 'Neuroscientist', org: 'AIIMS Delhi', img: rahulImg, bio: 'Renowned for research on memory. TED talk has over 4 million views.', color: '#e62b1e' },
   { id: '04', name: 'Arjun Verma', role: 'Climate Activist', org: 'GreenFuture India', img: priyaImg, bio: 'Named one of Forbes 30 Under 30 for his environmental movement work.', color: '#e62b1e' },
   { id: '05', name: 'Speaker 5', role: 'Innovator', org: 'Org 5', img: image1, bio: 'Leading breakthroughs in sustainable energy and modular design.', color: '#e62b1e' },
   { id: '06', name: 'Speaker 6', role: 'Tech Evangelist', org: 'Org 6', img: image1, bio: 'Specialist in decentralized networks and the future of digital identity.', color: '#e62b1e' },

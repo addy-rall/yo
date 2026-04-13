@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import CursorFX from './components/CursorFX'
+import CursorFX from './components/Cursorfx'
 import Hero from './components/Hero'
 import WhatIsTedx from './components/WhatIsTedx'
 import FeaturedSpeakers from './components/FeaturedSpeakers'

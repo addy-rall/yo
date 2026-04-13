@@ -120,7 +120,7 @@ export default function Team() {
         
         <p style={s.description}>
           Our board of curators and organizers is currently being finalized. 
-          The full lineup of visionaries behind <strong>TEDxBBAU</strong> will be revealed soon.
+          The team behind <strong>TEDxBBAU</strong> will be revealed soon.
         </p>
       </main>
 

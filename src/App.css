@@ -1,1 +1,9 @@
 
+* {
+  cursor: none !important;
+}
+
+/* Restore cursor inside iframes (e.g. YouTube embeds) */
+iframe {
+  cursor: auto !important;
+}

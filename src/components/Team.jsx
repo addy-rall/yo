@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-export default function UpdatingSoon() {
+export default function Team() {
   const isMobile = window.innerWidth < 768;
 
   const s = {
@@ -13,9 +13,8 @@ export default function UpdatingSoon() {
       minHeight: '100vh',
       display: 'flex',
       flexDirection: 'column',
-      overflow: 'hidden',
     },
-    hero: {
+    container: {
       flex: 1,
       display: 'flex',
       flexDirection: 'column',
@@ -25,31 +24,40 @@ export default function UpdatingSoon() {
       padding: '0 20px',
       position: 'relative',
     },
-    // The Container for the abstract X
-    canvas: {
+    visualContainer: {
       position: 'relative',
-      width: isMobile ? '280px' : '500px',
-      height: isMobile ? '280px' : '500px',
+      width: isMobile ? '200px' : '300px',
+      height: isMobile ? '200px' : '300px',
+      marginBottom: '40px',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+    },
+    statusBadge: {
+      background: 'rgba(230, 43, 30, 0.1)',
+      color: '#e62b1e',
+      padding: '8px 16px',
+      borderRadius: '20px',
+      fontSize: '0.75rem',
+      fontWeight: 700,
+      letterSpacing: '2px',
+      textTransform: 'uppercase',
       marginBottom: '20px',
+      border: '1px solid rgba(230, 43, 30, 0.3)',
     },
     title: {
-      fontSize: isMobile ? '2.2rem' : '4.5rem',
+      fontSize: isMobile ? '2.5rem' : '4.5rem',
       fontWeight: 900,
       textTransform: 'uppercase',
       letterSpacing: isMobile ? '-1px' : '-3px',
-      margin: '0',
-      zIndex: 10,
+      margin: 0,
     },
-    subtitle: {
+    description: {
       color: '#666',
       fontSize: '1rem',
-      maxWidth: '500px',
+      maxWidth: '450px',
       marginTop: '15px',
       lineHeight: '1.6',
-      zIndex: 10,
     }
   };
 
@@ -58,78 +66,61 @@ export default function UpdatingSoon() {
       <Navbar />
 
       <style>{`
-        /* The Pulsing Core */
-        .node {
-          position: absolute;
-          width: 4px;
-          height: 4px;
-          background: #e62b1e;
-          border-radius: 50%;
-          box-shadow: 0 0 15px #e62b1e, 0 0 30px #e62b1e;
-          animation: pulse 3s infinite ease-in-out;
+        /* Pulsing Core Animation */
+        @keyframes pulseRing {
+          0% { transform: scale(0.8); opacity: 0.5; }
+          50% { transform: scale(1.1); opacity: 0.2; }
+          100% { transform: scale(0.8); opacity: 0.5; }
         }
 
-        /* Connecting Lines */
-        .line {
-          position: absolute;
-          background: linear-gradient(90deg, transparent, rgba(230, 43, 30, 0.2), transparent);
-          height: 1px;
-          transform-origin: left;
+        @keyframes rotateBeam {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
 
-        @keyframes pulse {
-          0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.5); }
-        }
-
-        @keyframes float {
-          0%, 100% { transform: translateY(0) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        .x-shape {
-          animation: float 6s infinite ease-in-out;
+        .outer-ring {
           position: absolute;
           width: 100%;
           height: 100%;
+          border: 2px solid rgba(230, 43, 30, 0.2);
+          border-radius: 50%;
+          animation: pulseRing 4s infinite ease-in-out;
         }
 
-        /* Customizing the lines to form an abstract X */
-        .l1 { width: 140%; transform: rotate(45deg); top: 0; left: 0; }
-        .l2 { width: 140%; transform: rotate(-45deg); bottom: 0; left: 0; }
-        
-        .glow-text {
-          background: linear-gradient(to bottom, #fff 30%, #444 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+        .scanning-beam {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          background: conic-gradient(from 0deg, transparent 70%, rgba(230, 43, 30, 0.4) 100%);
+          animation: rotateBeam 3s linear infinite;
+        }
+
+        .core-dot {
+          width: 12px;
+          height: 12px;
+          background: #e62b1e;
+          border-radius: 50%;
+          box-shadow: 0 0 20px #e62b1e, 0 0 40px #e62b1e;
         }
       `}</style>
 
-      <main style={s.hero}>
-        <div style={s.canvas}>
-          {/* Abstract Coded X */}
-          <div className="x-shape">
-            <div className="line l1" style={{ opacity: 0.4 }}></div>
-            <div className="line l2" style={{ opacity: 0.4 }}></div>
-            
-            {/* Random Nodes across the X path */}
-            <div className="node" style={{ top: '10%', left: '10%', animationDelay: '0s' }}></div>
-            <div className="node" style={{ top: '50%', left: '50%', animationDelay: '0.5s' }}></div>
-            <div className="node" style={{ top: '90%', left: '90%', animationDelay: '1s' }}></div>
-            <div className="node" style={{ top: '10%', left: '90%', animationDelay: '1.5s' }}></div>
-            <div className="node" style={{ top: '90%', left: '10%', animationDelay: '2s' }}></div>
-            <div className="node" style={{ top: '30%', left: '30%', animationDelay: '0.2s' }}></div>
-            <div className="node" style={{ top: '70%', left: '70%', animationDelay: '0.8s' }}></div>
-          </div>
-
-          <h1 style={s.title} className="glow-text">
-            COMING <span style={{ color: '#e62b1e', WebkitTextFillColor: '#e62b1e' }}>SOON</span>
-          </h1>
+      <main style={s.container}>
+        <div style={s.visualContainer}>
+          <div className="outer-ring"></div>
+          <div className="scanning-beam"></div>
+          <div className="core-dot"></div>
         </div>
 
-        <p style={s.subtitle}>
-          We are currently engineering a new digital experience. <br/>
-          Stay tuned as we unveil the future of <strong>TEDxBBAU</strong>.
+        <div style={s.statusBadge}>System: Processing</div>
+        
+        <h1 style={s.title}>
+          TEAM <span style={{ color: '#e62b1e' }}>2026</span>
+        </h1>
+        
+        <p style={s.description}>
+          Our board of curators and organizers is currently being finalized. 
+          The full lineup of visionaries behind <strong>TEDxBBAU</strong> will be revealed soon.
         </p>
       </main>
 

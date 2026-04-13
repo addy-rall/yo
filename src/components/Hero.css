@@ -1,269 +1,259 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap');
+/* ── Base ── */
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
 
-/* ─────────────────────────────────────────
-   VARIABLES
-───────────────────────────────────────── */
-:root {
-  --red:      #e63025;
-  --bg:       #07080f;
-  --fg:       #ffffff;
-  --muted:    rgba(255,255,255,0.38);
-}
 
-/* ─────────────────────────────────────────
-   SECTION
-───────────────────────────────────────── */
+/* ── Hero Section ── */
 .hero {
   position: relative;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg);
-  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(ellipse at center, #140404 0%, #080000 55%, #000 100%);
   overflow: hidden;
-  cursor: default;
 }
 
-/* ─────────────────────────────────────────
-   STAR CANVAS
-───────────────────────────────────────── */
-.hero-stars {
+/* ── Floating geometry ── */
+.hero-geometry {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ─────────────────────────────────────────
-   WAVE LAYERS
-───────────────────────────────────────── */
-.hero-waves {
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 200%;
-  height: 220px;
   pointer-events: none;
   z-index: 1;
 }
 
-.wave {
+/* ── Bobble animations ── */
+@keyframes bobbleRing {
+  0%,100% { transform: perspective(400px) rotateX(var(--rx,60deg)) rotateZ(var(--rz,20deg)) translateY(0px);    opacity:.55; }
+  50%      { transform: perspective(400px) rotateX(var(--rx,60deg)) rotateZ(var(--rz,20deg)) translateY(-14px); opacity:.85; }
+}
+@keyframes bobbleSquare {
+  0%,100% { transform: perspective(400px) rotateX(var(--rx,45deg)) rotateZ(var(--rz,30deg)) translateY(0px)   rotate(0deg);  opacity:.45; }
+  50%      { transform: perspective(400px) rotateX(var(--rx,45deg)) rotateZ(var(--rz,30deg)) translateY(-10px) rotate(8deg); opacity:.70; }
+}
+@keyframes bobbleDot {
+  0%,100% { transform: translateY(0px)    scale(1);    opacity:.55; }
+  50%      { transform: translateY(-12px) scale(1.25); opacity:.90; }
+}
+@keyframes bobbleLine {
+  0%,100% { transform: perspective(400px) rotateZ(var(--rz,55deg)) translateY(0px)  scaleX(1);    opacity:.35; }
+  50%      { transform: perspective(400px) rotateZ(var(--rz,55deg)) translateY(-8px) scaleX(1.15); opacity:.55; }
+}
+
+/* ── Waves ── */
+.hero-waves {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 220px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  height: 220px;
 }
 
 .wave--1 {
-  fill: var(--red);
-  opacity: 0.13;
-  animation: waveDrift 7s linear infinite;
+  fill: rgba(200,35,25,0.055);
+  animation: waveSlide1 6s ease-in-out infinite, wavePulse 8s ease-in-out infinite;
 }
-
 .wave--2 {
-  fill: var(--red);
-  opacity: 0.07;
-  animation: waveDrift 11s linear infinite reverse;
+  fill: rgba(200,35,25,0.040);
+  animation: waveSlide2 8s ease-in-out infinite, wavePulse 10s ease-in-out 1s infinite;
 }
-
 .wave--3 {
-  fill: var(--red);
-  opacity: 0.05;
-  animation: waveDrift 9s linear infinite 2s;
+  fill: rgba(200,35,25,0.028);
+  animation: waveSlide3 11s ease-in-out infinite reverse, wavePulse 12s ease-in-out 2s infinite;
+}
+.wave--4 {
+  fill: rgba(200, 34, 25, 0.06);
+  animation: waveSlide4 14s ease-in-out infinite, wavePulse 9s ease-in-out 0.5s infinite;
 }
 
-@keyframes waveDrift {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+/* Each wave gets its own slide — different phase & amplitude */
+@keyframes waveSlide1 {
+  0%,100% { transform: translateX(0)    scaleY(1); }
+  33%      { transform: translateX(-55px) scaleY(1.12); }
+  66%      { transform: translateX(30px)  scaleY(0.92); }
+}
+@keyframes waveSlide2 {
+  0%,100% { transform: translateX(0)    scaleY(1); }
+  40%      { transform: translateX(65px)  scaleY(1.18); }
+  75%      { transform: translateX(-40px) scaleY(0.88); }
+}
+@keyframes waveSlide3 {
+  0%,100% { transform: translateX(0)     scaleY(1); }
+  30%      { transform: translateX(-45px) scaleY(1.10); }
+  70%      { transform: translateX(55px)  scaleY(0.94); }
+}
+@keyframes waveSlide4 {
+  0%,100% { transform: translateX(0)    scaleY(1); }
+  45%      { transform: translateX(50px)  scaleY(1.15); }
+  80%      { transform: translateX(-35px) scaleY(0.90); }
 }
 
-/* ─────────────────────────────────────────
-   CONTENT
-───────────────────────────────────────── */
+/* Shared vertical pulse — makes waves breathe */
+@keyframes wavePulse {
+  0%,100% { opacity: 1;    transform-origin: bottom; }
+  50%      { opacity: 0.6; }
+}
+
+/* ── Hero Content ── */
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 10;
   text-align: center;
   padding: 0 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  /* filter: url(#hero-distort) applied inline */
-  will-change: filter;
 }
 
 /* ── Tagline ── */
 .hero-tagline {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
+  justify-content: center;
+  gap: 14px;
+  color: rgba(255,255,255,0.40);
+  font-size: 11px;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--muted);
-  margin: 0;
-  animation: fadeUp 0.8s ease both;
+  margin-bottom: 24px;
 }
-
 .tagline-line {
   display: inline-block;
-  width: 32px;
-  height: 1px;
-  background: var(--red);
-  flex-shrink: 0;
+  width: 32px; height: 1px;
+  background: rgba(190,35,25,0.55);
 }
 
-/* ── Title ── */
+/* ── Hero Title ── */
 .hero-title {
-  margin: 0;
+  font-family: 'Poppins', Impact, 'Arial Narrow', sans-serif;
+  font-size: clamp(72px, 13vw, 160px);
   line-height: 1;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  font-size: clamp(5rem, 14vw, 11rem);
-  animation: fadeUp 0.9s ease 0.1s both;
-}
-
-.ted { color: var(--fg); }
-
-.x-mark {
-  font-size: 0.45em;
-  color: var(--red);
-  font-weight: 600;
-  vertical-align: baseline;
-  letter-spacing: 0;
-  position: relative;
-  top: -0.08em;
-  text-shadow: 0 0 40px rgba(230, 48, 37, 0.55);
-}
-
-.amu { color: var(--fg); }
-
-/* ── Theme label ── */
-.hero-theme {
+  font-weight: 400;
+  letter-spacing: -2px;
   display: flex;
-  align-items: center;
-  gap: 10px;
-  animation: fadeUp 0.9s ease 0.2s both;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 20px;
+  white-space: nowrap;
+  filter: drop-shadow(0 0 16px rgba(140,20,14,0.16));
 }
 
-.theme-word {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--red);
-  border: 1px solid rgba(230, 48, 37, 0.35);
-  padding: 5px 16px;
-  position: relative;
+/* ── TED — slightly brighter dull-red ── */
+@keyframes redSweep {
+  0%   { background-position: 100% 0; }
+  50%  { background-position: 0% 0; }
+  100% { background-position: 100% 0; }
 }
-
-.theme-word::before,
-.theme-word::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 1px;
-  background: rgba(230, 48, 37, 0.4);
-}
-
-.theme-word::before { right: 100%; margin-right: 8px; }
-.theme-word::after  { left:  100%; margin-left:  8px; }
-
-/* ── Sub ── */
-.hero-sub {
-  font-size: clamp(0.82rem, 1.5vw, 1rem);
-  font-weight: 300;
-  color: var(--muted);
-  max-width: 440px;
-  line-height: 1.8;
-  margin: 0;
-  animation: fadeUp 0.9s ease 0.3s both;
-}
-
-/* ─────────────────────────────────────────
-   GLASS REGISTER BUTTON
-───────────────────────────────────────── */
-.hero-actions {
-  margin-top: 8px;
-  animation: fadeUp 0.9s ease 0.4s both;
-}
-
-.hero-btn.primary {
-  position: relative;
-  display: inline-block;
-  padding: 13px 40px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  overflow: hidden;
-  transition: background 0.3s, border-color 0.3s, transform 0.2s;
-  cursor: pointer;
-}
-
-/* Top highlight edge — gives the glass "thickness" look */
-.hero-btn.primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(255,255,255,0.55) 40%,
-    rgba(255,255,255,0.55) 60%,
-    transparent 100%
-  );
-}
-
-/* Shine sweep element */
-.btn-shine {
-  position: absolute;
-  top: -10%;
-  left: -80%;
-  width: 50%;
-  height: 120%;
+.hero-title .ted {
   background: linear-gradient(
-    105deg,
-    transparent 30%,
-    rgba(255,255,255,0.18) 50%,
-    transparent 70%
+    90deg,
+    #9e1f18 0%,
+    #cc3830 30%,
+    #d94038 50%,
+    #9e1f18 75%,
+    #7a1610 100%
   );
-  transform: skewX(-15deg);
-  transition: left 0.55s ease;
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: redSweep 4s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* ── x mark ── */
+.hero-title .x-mark {
+  font-size: 0.42em;
+  -webkit-text-fill-color: rgba(160,38,28,0.70);
+  color: rgba(160,38,28,0.70);
+  display: inline-block;
+  align-self: flex-end;
+  margin-bottom: 0.08em;
+  margin-left: 0.10em;
+  margin-right: 0.14em;
+}
+
+/* ── BBAU — solid silver shimmer ── */
+@keyframes silverSweep {
+  0%   { background-position: 100% 0; }
+  50%  { background-position: 0% 0; }
+  100% { background-position: 100% 0; }
+}
+.hero-title .bbau {
+  background: linear-gradient(90deg, #888 0%, #bbb 25%, #fff 50%, #bbb 65%, #888 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: silverSweep 3s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* ── Theme ── */
+.hero-theme {
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; margin-bottom: 16px;
+}
+.hero-theme::before,.hero-theme::after {
+  content: ''; display: inline-block;
+  width: 40px; height: 1px;
+  background: rgba(190,35,25,0.40);
+}
+.theme-word {
+  font-size: 11px; letter-spacing: 6px; text-transform: uppercase;
+  color: rgba(200,40,30,0.60);
+  border: 1px solid rgba(200,40,30,0.22);
+  padding: 6px 16px;
+}
+
+/* ── Sub text ── */
+.hero-sub {
+  color: rgba(255,255,255,0.32);
+  font-size: 14px; letter-spacing: 0.5px; line-height: 1.7;
+  margin-bottom: 40px; max-width: 380px;
+  margin-left: auto; margin-right: auto;
+}
+
+/* ── Actions ── */
+.hero-actions { display: flex; justify-content: center; }
+
+/* ── Register Button ── */
+.hero-btn.primary {
+  position: relative; display: inline-block; overflow: hidden;
+  padding: 14px 48px;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #2a2a2a 100%);
+  border: 1px solid rgba(190,35,25,0.45);
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+  transition: border-color 0.3s, color 0.3s;
+  cursor: none;
+}
+.hero-btn.primary:hover { border-color: rgba(190,35,25,0.85); color:#fff; }
+
+.btn-shine {
+  position: absolute; top: 0; left: -120%; width: 60%; height: 100%;
+  background: linear-gradient(120deg,transparent 0%,rgba(255,255,255,0.05) 40%,rgba(255,255,255,0.15) 50%,rgba(255,255,255,0.05) 60%,transparent 100%);
+  animation: btnShine 3.2s ease-in-out infinite;
   pointer-events: none;
 }
+@keyframes btnShine { 0%{left:-120%} 40%{left:130%} 100%{left:130%} }
 
-.hero-btn.primary:hover .btn-shine {
-  left: 140%;
+.hero-btn.primary::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg,transparent,rgba(190,35,25,0.5),transparent);
 }
 
-.hero-btn.primary:hover {
-  background: rgba(255, 255, 255, 0.13);
-  border-color: rgba(255, 255, 255, 0.38);
-  transform: translateY(-2px);
-}
-
-/* ─────────────────────────────────────────
-   STAGGERED ENTRY
-───────────────────────────────────────── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* ── Ripple keyframe ── */
+@keyframes rippleExpand {
+  0%   { width:0;     height:0;     opacity:1; transform:translate(-50%,-50%) scale(1); }
+  100% { width:200px; height:200px; opacity:0; transform:translate(-50%,-50%) scale(1); }
 }

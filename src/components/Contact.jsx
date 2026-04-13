@@ -335,7 +335,7 @@ export default function Contact() {
               <div style={styles.iconCircle}><EmailIcon /></div>
               <div>
                 <p style={styles.contactLabel}>Email</p>
-                <p style={styles.contactValue}>info@tedxbbau.in</p>
+                <p style={styles.contactValue}>tedx.bbau@gmail.com</p>
               </div>
             </div>
 
@@ -343,7 +343,8 @@ export default function Contact() {
               <div style={styles.iconCircle}><PhoneIcon /></div>
               <div>
                 <p style={styles.contactLabel}>WhatsApp Only</p>
-                <p style={styles.contactValue}>+91 XXXXX XXXXX</p>
+                <p style={styles.contactValue}>+91 7906473285</p>
+                <p style={styles.contactValue}>+91 6394893708</p>
               </div>
             </div>
 
@@ -351,7 +352,7 @@ export default function Contact() {
               <div style={styles.iconCircle}><PinIcon /></div>
               <div>
                 <p style={styles.contactLabel}>Venue</p>
-                <p style={styles.venueHighlight}>Convention Hall, BBAU</p>
+                <p style={styles.venueHighlight}>Auditorium, Central Building</p>
                 <p style={styles.contactValue}>
                   Babasaheb Bhimrao Ambedkar University,<br />
                   Vidya Vihar, Raebareli Rd, Lucknow,<br />

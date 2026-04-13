@@ -39,6 +39,15 @@ function PlayIcon() {
   )
 }
 
+// Heart Icon Component
+function HeartIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="#ff2b2b" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+    </svg>
+  )
+}
+
 export default function PRHighlights() {
   const [active, setActive] = useState(null)
 
@@ -70,6 +79,11 @@ export default function PRHighlights() {
           letter-spacing: -0.02em;
         }
 
+        /* Styling for the RED TEDx part */
+        .pr-title span.red {
+          color: #ff2b2b;
+        }
+
         .pr-sub {
           font-size: 16px;
           color: #666;
@@ -82,7 +96,6 @@ export default function PRHighlights() {
           justify-content: center;
           gap: 30px;
           width: 100%;
-          /* 4 cards * 320px + gaps */
           max-width: 1400px; 
           margin: 0 auto;
         }
@@ -95,7 +108,6 @@ export default function PRHighlights() {
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           border: 2px solid transparent;
           box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-          /* FORCED WIDTH */
           width: 320px; 
           box-sizing: border-box;
         }
@@ -133,7 +145,6 @@ export default function PRHighlights() {
 
         .polaroid-screen {
           width: 100%;
-          /* Maintains vertical look with 320px width */
           aspect-ratio: 9 / 13; 
           overflow: hidden;
           position: relative;
@@ -175,16 +186,21 @@ export default function PRHighlights() {
           opacity: 1;
         }
 
+        /* Updated Label Container for Heart alignment */
         .polaroid-label {
           margin-top: 25px;
           padding: 0 5px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
         }
 
         .label-name {
           font-family: 'Permanent Marker', cursive;
-          font-size: 20px; /* Slightly larger to match wider card */
+          font-size: 20px;
           color: #ddd;
           display: block;
+          text-align: left;
         }
 
         .pr-cta {
@@ -211,14 +227,16 @@ export default function PRHighlights() {
 
         @media (max-width: 400px) {
           .polaroid {
-            width: 100%; /* Fallback for very small screens */
+            width: 100%;
           }
         }
       `}</style>
 
       <section className="pr-section">
         <p className="pr-eyebrow">On the Feed</p>
-        <h2 className="pr-title"> TEDxBBAU on Socials</h2>
+        <h2 className="pr-title"> 
+          <span className="red">TEDx</span>BBAU on Socials
+        </h2>
         <p className="pr-sub">Behind the scenes of the movement.</p>
 
         <div className="reel-grid">
@@ -246,7 +264,9 @@ export default function PRHighlights() {
                 </div>
               </div>
 
+              {/* Heart and Label */}
               <div className="polaroid-label">
+                <HeartIcon />
                 <span className="label-name">{r.label}</span>
               </div>
             </div>
@@ -254,7 +274,14 @@ export default function PRHighlights() {
         </div>
 
         <div className="pr-cta">
-          <a href="#" className="pr-link">Explore More</a>
+          <a 
+            href="https://www.instagram.com/tedxbbau/" 
+            className="pr-link"
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            Explore More
+          </a>
         </div>
       </section>
     </>

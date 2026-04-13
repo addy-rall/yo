@@ -8,12 +8,12 @@ import arjunImg from '../assets/img4.png'
 import image1 from '../assets/image1.png'
 
 const speakers = [
-  { name: 'Vijendra Chauhan', role: 'AI Researcher', org: 'IIT Delhi', img: arjunImg, color: '#c0392b', accent: '#e74c3c', initials: 'VC', bio: 'Expert in Neural Networks and AI ethics.' },
-  { name: 'Gajendra Purohit', role: 'Entrepreneur', org: 'FutureTech Labs', img: nadiaImg, color: '#6c3483', accent: '#9b59b6', initials: 'GP', bio: 'Building the future of decentralized tech.' },
-  { name: 'Speaker 3', role: 'Neuroscientist', org: 'AIIMS Delhi', img: rahulImg, color: '#0e6655', accent: '#1abc9c', initials: 'S3', bio: 'Researching cognitive mapping and brain health.' },
-  { name: 'Speaker 4', role: 'Climate Activist', org: 'GreenFuture', img: priyaImg, color: '#784212', accent: '#e67e22', initials: 'S4', bio: 'Leading grassroots climate policy changes.' },
-  { name: 'Speaker 5', role: 'Tech Lead', org: 'Google', img: image1, color: '#6f8c50', accent: '#729048', initials: 'S5', bio: 'Specializing in cloud infrastructure and scaling.' },
-  { name: 'Speaker 6', role: 'Designer', org: 'Adobe', img: image1, color: '#974b8f', accent: '#9b549e', initials: 'S6', bio: 'Pushing boundaries in motion and UI design.' },
+  { name: 'Vijendra Chauhan', role: 'role', org: 'org', img: arjunImg, color: '#c0392b', accent: '#e74c3c', initials: 'VC', bio: 'bio' },
+  { name: 'Gajendra Purohit', role: 'role', org: 'org', img: nadiaImg, color: '#6c3483', accent: '#9b59b6', initials: 'GP', bio: 'bio' },
+  { name: 'Speaker 3', role: 'role', org: 'org', img: rahulImg, color: '#0e6655', accent: '#1abc9c', initials: 'S3', bio: 'bio' },
+  { name: 'Speaker 4', role: 'role', org: 'org', img: priyaImg, color: '#784212', accent: '#e67e22', initials: 'S4', bio: 'bio' },
+  { name: 'Speaker 5', role: 'role', org: 'org', img: image1, color: '#6f8c50', accent: '#729048', initials: 'S5', bio: 'bio' },
+  { name: 'Speaker 6', role: 'role', org: 'org', img: image1, color: '#974b8f', accent: '#9b549e', initials: 'S6', bio: 'bio' },
 ]
 
 export default function FeaturedSpeakers() {

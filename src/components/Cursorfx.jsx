@@ -28,7 +28,7 @@ export default function CursorFX() {
   /* ── Spiral cursor trail (mouse + touch) ── */
   useEffect(() => {
     const canvas = document.createElement('canvas')
-    canvas.style.cssText = `position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;`
+    canvas.style.cssText = `position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;`
     document.body.appendChild(canvas)
     const ctx = canvas.getContext('2d')
 
@@ -121,7 +121,7 @@ export default function CursorFX() {
       position: fixed;
       top: 0; left: 0;
       width: ${SIZE}px; height: 96px;
-      z-index: 9997;
+      z-index: 99997;
       pointer-events: none;
       will-change: transform;
     `
@@ -185,7 +185,7 @@ export default function CursorFX() {
       for (let i = 0; i < 3; i++) {
         const ring = document.createElement('div')
         ring.style.cssText = `
-          position:fixed; pointer-events:none; z-index:9998;
+          position:fixed; pointer-events:none; z-index:99998;
           left:${clientX}px; top:${clientY}px;
           width:0; height:0; border-radius:50%;
           border:1.5px solid rgba(230,43,30,${0.7 - i * 0.2});

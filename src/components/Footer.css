@@ -256,3 +256,18 @@
   background: #e62b1e; /* TED Red */
   transform: translateY(-3px);
 }
+/* Add/Update this in Footer.css */
+.footer-logo {
+    display: flex;
+    align-items: baseline; /* Ensures text sits on the same line */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px; /* Or your preferred size */
+}
+
+.ted-x {
+    color: #B32D2D; /* Using your dull red */
+    font-size: 0.8em; /* TEDx style typically has a smaller 'x' */
+    margin: 0 1px;
+    /* Remove any top or relative positioning if present */
+}

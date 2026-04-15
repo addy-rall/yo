@@ -14,13 +14,13 @@ const policies = [
   { label: 'Privacy Policy', path: '/privacy' },
   { label: 'Terms of Service', path: '/terms' },
   { label: 'Cookie Policy', path: '/cookie' },
-  
 ]
 
 export default function Footer() {
   const navigate = useNavigate()
 
-  const handleNav = (path) => {
+  const handleNav = (path, e) => {
+    e.preventDefault()
     navigate(path)
     window.scrollTo({ top: 0, behavior: 'instant' })
   }
@@ -29,14 +29,14 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-top">
         <div className="footer-brand">
-          <a href="#" className="footer-logo" onClick={handleNav.bind(null, '/')}>
-            TED<span className="ted-x">x</span>BBAU
+          {/* Logo updated to stay on the same horizontal plane */}
+          <a href="/" className="footer-logo" onClick={(e) => handleNav('/', e)} style={{ display: 'inline-flex', alignItems: 'baseline', whiteSpace: 'nowrap' }}>
+            TED<span className="ted-x" style={{ display: 'inline' }}>x</span>BBAU
           </a>
           <p className="footer-tagline">
             Inspiring ideas from Babasaheb Bhimrao Ambedkar University — Lucknow.
           </p>
           
-          {/* UPDATED SOCIALS SECTION */}
           <div className="footer-socials">
             <a 
               href="https://www.instagram.com/tedxbbau/" 
@@ -56,10 +56,27 @@ export default function Footer() {
             >
               L
             </a>
-            {/* Keeping other placeholders for consistency, update as needed */}
-            {['Twitter', 'Facebook', 'YouTube'].map(s => (
-              <a href="#" key={s} aria-label={s} className="social-icon">{s[0]}</a>
-            ))}
+            {/* Added your specific YouTube link */}
+            <a 
+              href="https://www.youtube.com/watch?v=NI3u07of3co&list=PLZ4vvmNukajzhLZyDYHc2O_qteW97R_Hw" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="social-icon"
+              aria-label="YouTube"
+            >
+              Y
+            </a>
+            {/* Added link to TED.com */}
+            <a 
+              href="https://www.ted.com/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="social-icon"
+              aria-label="TED"
+            >
+              T
+            </a>
+            
           </div>
         </div>
 
@@ -69,7 +86,7 @@ export default function Footer() {
             <ul>
               {quickLinks.map(l => (
                 <li key={l.label}>
-                  <a onClick={() => handleNav(l.path)} style={{ cursor: 'pointer' }}>{l.label}</a>
+                  <a onClick={(e) => handleNav(l.path, e)} style={{ cursor: 'pointer' }}>{l.label}</a>
                 </li>
               ))}
             </ul>
@@ -80,7 +97,7 @@ export default function Footer() {
             <ul>
               {policies.map(l => (
                 <li key={l.label}>
-                  <a onClick={() => handleNav(l.path)} style={{ cursor: 'pointer' }}>{l.label}</a>
+                  <a onClick={(e) => handleNav(l.path, e)} style={{ cursor: 'pointer' }}>{l.label}</a>
                 </li>
               ))}
             </ul>
@@ -106,11 +123,11 @@ export default function Footer() {
       <div className="footer-bottom">
         <p>© 2025 TEDxBBAU. This independent TEDx event is operated under a license from TED.</p>
         <div className="footer-nav">
-          <a onClick={() => handleNav('/#team')} style={{ cursor: 'pointer' }}>Meet Our Team</a>
+          <a onClick={(e) => handleNav('/#team', e)} style={{ cursor: 'pointer' }}>Meet Our Team</a>
           <span>·</span>
-          <a onClick={() => handleNav('/speakers')} style={{ cursor: 'pointer' }}>Our Speakers</a>
+          <a onClick={(e) => handleNav('/speakers', e)} style={{ cursor: 'pointer' }}>Our Speakers</a>
           <span>·</span>
-          <a onClick={() => handleNav('/contact')} style={{ cursor: 'pointer' }}>Contact Us</a>
+          <a onClick={(e) => handleNav('/contact', e)} style={{ cursor: 'pointer' }}>Contact Us</a>
         </div>
       </div>
     </footer>

@@ -75,29 +75,27 @@
   animation: waveSlide4 14s ease-in-out infinite, wavePulse 9s ease-in-out 0.5s infinite;
 }
 
-/* Each wave gets its own slide — different phase & amplitude */
 @keyframes waveSlide1 {
-  0%,100% { transform: translateX(0)    scaleY(1); }
+  0%,100% { transform: translateX(0)      scaleY(1); }
   33%      { transform: translateX(-55px) scaleY(1.12); }
   66%      { transform: translateX(30px)  scaleY(0.92); }
 }
 @keyframes waveSlide2 {
-  0%,100% { transform: translateX(0)    scaleY(1); }
+  0%,100% { transform: translateX(0)     scaleY(1); }
   40%      { transform: translateX(65px)  scaleY(1.18); }
   75%      { transform: translateX(-40px) scaleY(0.88); }
 }
 @keyframes waveSlide3 {
-  0%,100% { transform: translateX(0)     scaleY(1); }
+  0%,100% { transform: translateX(0)      scaleY(1); }
   30%      { transform: translateX(-45px) scaleY(1.10); }
   70%      { transform: translateX(55px)  scaleY(0.94); }
 }
 @keyframes waveSlide4 {
-  0%,100% { transform: translateX(0)    scaleY(1); }
+  0%,100% { transform: translateX(0)     scaleY(1); }
   45%      { transform: translateX(50px)  scaleY(1.15); }
   80%      { transform: translateX(-35px) scaleY(0.90); }
 }
 
-/* Shared vertical pulse — makes waves breathe */
 @keyframes wavePulse {
   0%,100% { opacity: 1;    transform-origin: bottom; }
   50%      { opacity: 0.6; }
@@ -145,6 +143,15 @@
   filter: drop-shadow(0 0 16px rgba(140,20,14,0.16));
 }
 
+/* ── Mobile only: heavier weight + smaller size to stay on one line ── */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(48px, 16vw, 72px);
+    letter-spacing: -1px;
+    font-weight: 800;
+  }
+}
+
 /* ── TED — slightly brighter dull-red ── */
 @keyframes redSweep {
   0%   { background-position: 100% 0; }
@@ -175,9 +182,9 @@
   color: rgba(160,38,28,0.70);
   display: inline-block;
   align-self: flex-end;
-  margin-bottom: 0.08em;
-  margin-left: 0.10em;
-  margin-right: 0.14em;
+  margin-bottom: 0.12em;
+  margin-left: 0.06em;
+  margin-right: 0.10em;
 }
 
 /* ── BBAU — solid silver shimmer ── */

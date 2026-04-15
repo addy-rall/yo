@@ -1,193 +1,145 @@
 import React, { useState, useEffect } from 'react';
 
-const sponsors = {
-  platinum: [
-    { name: 'Global Tech Corp', logo: 'https://via.placeholder.com/200x100?text=Platinum+Partner', desc: 'Innovation Lead' },
+const partners = {
+  mediaPartner: [
+    { name: 'Media Partner Name', logo: 'https://via.placeholder.com/200x100?text=Media+Partner' },
   ],
-  gold: [
-    { name: 'Future Systems', logo: 'https://via.placeholder.com/180x80?text=Gold+Partner' },
-    { name: 'Creative Labs', logo: 'https://via.placeholder.com/180x80?text=Gold+Partner' },
-  ],
-  silver: [
-    { name: 'Eco Energy', logo: 'https://via.placeholder.com/150x60?text=Silver+Partner' },
-    { name: 'Digital Trust', logo: 'https://via.placeholder.com/150x60?text=Silver+Partner' },
-    { name: 'Venture Plus', logo: 'https://via.placeholder.com/150x60?text=Silver+Partner' },
+  stallPartner: [
+    { name: 'Stall Partner Name', logo: 'https://via.placeholder.com/200x100?text=Stall+Partner' },
   ],
 };
 
-export default function Sponsors() {
+export default function Partners() {
   const [hovered, setHovered] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const theme = {
+    fontFamily: "'Poppins', sans-serif",
+    dullRed: '#B32D2D', 
+    darkBg: '#0F0F0F',
+    white: '#FFFFFF',
+  };
+
   const styles = {
+    fontImport: `
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
+    `,
     section: {
-      backgroundColor: '#000',
-      padding: isMobile ? '60px 20px' : '100px 40px',
-      fontFamily: "'Arial', sans-serif",
-      display: 'flex',
-      justifyContent: 'center',
-    },
-    container: {
-      width: '100%',
-      maxWidth: '1300px',
-      border: '1.5px solid #b32d2d',
-      backgroundColor: '#050505',
-      padding: isMobile ? '40px 20px' : '80px 60px',
+      backgroundColor: theme.darkBg,
+      // Increased vertical padding (80px/120px)
+      padding: isMobile ? '80px 24px' : '120px 40px',
+      fontFamily: theme.fontFamily,
       textAlign: 'center',
-      boxShadow: '0 0 25px rgba(179, 45, 45, 0.15)',
+      color: theme.white,
     },
-    eyebrow: {
-      color: '#b32d2d',
-      textTransform: 'uppercase',
-      fontSize: '13px',
-      letterSpacing: '4px',
-      marginBottom: '10px',
-      display: 'block',
+    heading: {
+      fontSize: isMobile ? '36px' : '52px',
+      fontWeight: '900',
+      // Increased space below the main heading
+      marginBottom: isMobile ? '60px' : '80px',
+      letterSpacing: '-1px',
     },
-    title: {
-      color: '#fff',
-      fontSize: isMobile ? '32px' : '48px',
-      fontWeight: '800',
-      marginBottom: '20px',
-      marginTop: '0',
+    redText: { 
+      color: theme.dullRed,
+      marginRight: '12px' 
     },
-    sub: {
-      color: '#888',
-      fontSize: '16px',
-      maxWidth: '700px',
-      margin: '0 auto 60px',
-      lineHeight: '1.6',
-    },
-    tierWrapper: {
-      marginBottom: '50px',
-    },
-    tierTitle: {
-      color: '#555',
-      fontSize: '12px',
-      textTransform: 'uppercase',
-      letterSpacing: '3px',
-      marginBottom: '30px',
+    grid: {
       display: 'flex',
-      alignItems: 'center',
+      flexDirection: isMobile ? 'column' : 'row',
       justifyContent: 'center',
-      gap: '15px',
+      gap: isMobile ? '60px' : '100px', // Increased gap between categories
+      maxWidth: '1100px',
+      margin: '0 auto',
     },
-    line: {
-      height: '1px',
-      background: '#222',
+    categoryWrapper: {
       flex: 1,
-    },
-    grid: (tier) => ({
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
-      gap: tier === 'platinum' ? '40px' : '20px',
-    }),
-    card: (tier, id) => ({
-      backgroundColor: '#0a0a0a',
-      border: `1px solid ${hovered === id ? '#b32d2d' : '#1a1a1a'}`,
-      borderRadius: '12px',
-      padding: tier === 'platinum' ? '40px' : '25px',
-      width: tier === 'platinum' ? '350px' : tier === 'gold' ? '280px' : '200px',
-      transition: 'all 0.4s ease',
-      cursor: 'pointer',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center',
-      transform: hovered === id ? 'translateY(-10px)' : 'translateY(0)',
-      boxShadow: hovered === id ? '0 10px 20px rgba(0,0,0,0.5)' : 'none',
-    }),
-    logo: {
-      maxWidth: '100%',
-      height: 'auto',
-      filter: 'grayscale(100%) brightness(0.8)',
-      transition: 'filter 0.3s ease',
     },
-    cta: {
-      marginTop: '60px',
-      padding: '15px 35px',
-      backgroundColor: 'transparent',
-      border: '1px solid #b32d2d',
-      color: '#fff',
-      fontSize: '14px',
+    categoryTitle: {
+      fontSize: '13px',
+      letterSpacing: '3px',
       textTransform: 'uppercase',
-      letterSpacing: '2px',
-      cursor: 'pointer',
-      borderRadius: '4px',
+      color: '#666',
+      // Increased padding inside the category titles
+      marginBottom: '35px',
+      borderBottom: `1px solid ${theme.dullRed}`,
+      paddingBottom: '8px',
+    },
+    frame: (id) => ({
+      position: 'relative',
+      // Added internal padding to the square frame
+      padding: '15px',
+      border: `2px solid ${hovered === id ? theme.dullRed : '#222'}`,
       transition: 'all 0.3s ease',
+      backgroundColor: '#050505',
+    }),
+    imageContainer: {
+      width: isMobile ? '220px' : '260px',
+      height: '130px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      overflow: 'hidden',
+    },
+    logo: (id) => ({
+      maxWidth: '80%',
+      maxHeight: '80%',
+      filter: hovered === id ? 'grayscale(0%) brightness(1)' : 'grayscale(100%) brightness(0.6)',
+      transition: 'all 0.4s ease',
+    }),
+    partnerName: {
+      marginTop: '20px',
+      fontSize: '15px',
+      fontWeight: '600',
+      color: theme.white,
+      letterSpacing: '0.5px'
     }
   };
 
-  const renderTier = (tierName, data) => (
-    <div style={styles.tierWrapper}>
-      <div style={styles.tierTitle}>
-        <div style={styles.line} />
-        {tierName} PARTNERS
-        <div style={styles.line} />
-      </div>
-      <div style={styles.grid(tierName)}>
-        {data.map((item, idx) => {
-          const id = `${tierName}-${idx}`;
-          return (
-            <div
-              key={id}
-              style={styles.card(tierName, id)}
-              onMouseEnter={() => setHovered(id)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              <img 
-                src={item.logo} 
-                alt={item.name} 
-                style={{
-                  ...styles.logo,
-                  filter: hovered === id ? 'grayscale(0%) brightness(1)' : 'grayscale(100%) brightness(0.8)'
-                }} 
-              />
-              {tierName === 'platinum' && (
-                <p style={{ color: '#666', fontSize: '12px', marginTop: '15px', letterSpacing: '1px' }}>
-                  {item.desc}
-                </p>
-              )}
+  const renderCategory = (title, data, idPrefix) => (
+    <div style={styles.categoryWrapper}>
+      <h3 style={styles.categoryTitle}>{title}</h3>
+      {data.map((partner, idx) => {
+        const id = `${idPrefix}-${idx}`;
+        return (
+          <div 
+            key={id} 
+            onMouseEnter={() => setHovered(id)} 
+            onMouseLeave={() => setHovered(null)}
+            style={{ cursor: 'pointer' }}
+          >
+            <div style={styles.frame(id)}>
+              <div style={styles.imageContainer}>
+                <img src={partner.logo} alt={partner.name} style={styles.logo(id)} />
+              </div>
             </div>
-          );
-        })}
-      </div>
+            <p style={styles.partnerName}>{partner.name}</p>
+          </div>
+        );
+      })}
     </div>
   );
 
   return (
     <section style={styles.section}>
-      <div style={styles.container}>
-        <span style={styles.eyebrow}>Our Partners</span>
-        <h2 style={styles.title}>Supported By</h2>
-        <p style={styles.sub}>
-          We are proud to collaborate with organizations that share our commitment to 
-          spreading ideas that challenge and inspire change.
-        </p>
+      <style>{styles.fontImport}</style>
+      
+      <h2 style={styles.heading}>
+        <span style={styles.redText}>Our</span>Partners
+      </h2>
 
-        {renderTier('platinum', sponsors.platinum)}
-        {renderTier('gold', sponsors.gold)}
-        {renderTier('silver', sponsors.silver)}
-
-        <button 
-          style={{
-            ...styles.cta,
-            backgroundColor: hovered === 'btn' ? '#b32d2d' : 'transparent'
-          }}
-          onMouseEnter={() => setHovered('btn')}
-          onMouseLeave={() => setHovered(null)}
-          onClick={() => window.location.href = 'mailto:sponsors@tedxbbau.in'}
-        >
-          Become a Sponsor
-        </button>
+      <div style={styles.grid}>
+        {renderCategory('Media Partner', partners.mediaPartner, 'media')}
+        {renderCategory('Stall Partner', partners.stallPartner, 'stall')}
       </div>
     </section>
   );

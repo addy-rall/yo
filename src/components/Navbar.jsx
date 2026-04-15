@@ -16,7 +16,7 @@ const links = [
   { name: 'Speakers', path: '/speakers', isRoute: true },
   { name: 'Sponsors', path: '/sponsors', isRoute: true },
   { name: 'Team', path: '/teamy', isRoute: true },
-  { name: 'Tedx2025', path: '/tedxbbau2025', isRoute: true },
+  
   { name: 'Contact', path: '/contact', isRoute: true }
 ]
 

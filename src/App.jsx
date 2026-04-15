@@ -20,6 +20,7 @@ import SpeakersPage from './components/Speaker'
 import Team from './components/Team'
 import './App.css'
 import TEDx2025 from './components/Tedxbbau2025'
+import Tiss from './components/Tf'
 
 function Home() {
   return (
@@ -27,6 +28,7 @@ function Home() {
       <Hero />
       <WhatIsTedx />
       <Theme />
+      <Tiss/>
       <FeaturedSpeakers />
       <PRHighlights />
       <Whyattend />
@@ -44,7 +46,7 @@ export default function App() {
         
         <Routes>
           <Route path="/" element={<Home />} />
-         <Route path="/tedxbbau2025" element={<TEDx2025 />} />
+         
           <Route path="/teamy" element={<Team/>} />
           <Route path="/sponsors" element={<Sponsors />} />
           <Route path="/speakers" element={<SpeakersPage />} />

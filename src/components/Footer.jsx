@@ -14,7 +14,7 @@ const policies = [
   { label: 'Privacy Policy', path: '/privacy' },
   { label: 'Terms of Service', path: '/terms' },
   { label: 'Cookie Policy', path: '/cookie' },
-  { label: 'Refund Policy', path: '/refund' },
+  
 ]
 
 export default function Footer() {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 // Assets
 import img4 from '../assets/img4.png';
-import bish from '../assets/bish.png';
+import k from '../assets/y.png';
 
 const ChiefGuestSection = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -132,7 +132,7 @@ const ChiefGuestSection = () => {
             <div style={styles.imageWrapper}>
               <div style={styles.decoration}></div>
               <div style={styles.imageContainer}>
-                <img src={bish} alt="Honorable Guest" style={styles.image} />
+                <img src={k} alt="Honorable Guest" style={styles.image} />
               </div>
             </div>
             <div style={styles.info}>

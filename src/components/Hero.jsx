@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Hero.css'
 
@@ -31,6 +31,50 @@ function Shape({ type, size, top, left, delay, dur, rotX, rotZ }) {
   if (type === 'dot')    return <div style={{ ...base, width: size, height: size, borderRadius: '50%', background: 'rgba(160,28,20,0.28)' }} />
   if (type === 'line')   return <div style={{ ...base, width: size, height: 1, background: 'linear-gradient(90deg,transparent,rgba(160,28,20,0.18),transparent)' }} />
   return null
+}
+
+/* ── Countdown Timer ── */
+function getTimeLeft() {
+  const target = new Date('2026-05-04T09:00:00')
+  const now = new Date()
+  const diff = target - now
+  if (diff <= 0) return { days: 0, hrs: 0, mins: 0 }
+  return {
+    days: Math.floor(diff / 86400000),
+    hrs:  Math.floor((diff % 86400000) / 3600000),
+    mins: Math.floor((diff % 3600000)  / 60000),
+  }
+}
+
+function CountdownTimer() {
+  const [time, setTime] = useState(getTimeLeft)
+
+  useEffect(() => {
+    const id = setInterval(() => setTime(getTimeLeft()), 30000)
+    return () => clearInterval(id)
+  }, [])
+
+  const units = [
+    ['days', time.days],
+    ['hrs',  time.hrs],
+    ['mins', time.mins],
+  ]
+
+  return (
+    <div className="countdown-wrap">
+      {units.map(([label, val], i) => (
+        <div key={label} className="countdown-unit">
+          <span className="countdown-num">
+            {String(val).padStart(2, '0')}
+          </span>
+          <span className="countdown-label">{label}</span>
+          {i < units.length - 1 && (
+            <span className="countdown-sep" aria-hidden="true">:</span>
+          )}
+        </div>
+      ))}
+    </div>
+  )
 }
 
 /* ── Red outline rocket SVG matching reference image ── */
@@ -173,9 +217,9 @@ export default function Hero() {
     }
   }, [])
 
-  /* ── 🚀 Rocket: orbits page, chases & parks at cursor ── */
+  /* ── Rocket: orbits page, chases & parks at cursor ── */
   useEffect(() => {
-    const SIZE = 72   // px — half-width/height offset
+    const SIZE = 72
     const HALF = SIZE / 2
 
     const wrapper = document.createElement('div')
@@ -194,7 +238,7 @@ export default function Hero() {
     let rx = window.innerWidth  * 0.20
     let ry = window.innerHeight * 0.20
     let vx = 0, vy = 0
-    let heading = -90   // degrees; SVG nose points up
+    let heading = -90
     let orbitAngle = 0
     let frameId
 
@@ -207,7 +251,6 @@ export default function Hero() {
       const hasMouse = m.x > 0
 
       if (!hasMouse) {
-        /* Figure-8 Lissajous swirl */
         orbitAngle += 0.013
         const tx = cx + Math.cos(orbitAngle)     * (W * 0.37)
         const ty = cy + Math.sin(orbitAngle * 2) * (H * 0.28)
@@ -215,7 +258,6 @@ export default function Hero() {
         vy += (ty - ry) * 0.048
         vx *= 0.86; vy *= 0.86
       } else {
-        /* Chase cursor */
         const dx = m.x - rx
         const dy = m.y - ry
         const dist = Math.sqrt(dx * dx + dy * dy)
@@ -225,20 +267,17 @@ export default function Hero() {
           vy += (dy / dist) * pull * 0.45
           vx *= 0.80; vy *= 0.80
         } else {
-          /* Parked — hard brake */
           vx *= 0.50; vy *= 0.50
         }
       }
 
       rx += vx; ry += vy
 
-      /* Heading — only update when moving meaningfully */
       const speed = Math.sqrt(vx * vx + vy * vy)
       if (speed > 0.5) {
         heading = Math.atan2(vy, vx) * (180 / Math.PI) + 90
       }
 
-      /* Single clean transform: position then rotate */
       wrapper.style.transform = `translate(${rx - HALF}px, ${ry - HALF}px) rotate(${heading}deg)`
 
       frameId = requestAnimationFrame(tick)
@@ -253,7 +292,7 @@ export default function Hero() {
     const hero = heroRef.current
     if (!hero) return
     const onClick = (e) => {
-      if (e.target.closest?.('.hero-title, .hero-tagline, .hero-theme, .hero-actions')) return
+      if (e.target.closest?.('.hero-title, .hero-tagline, .hero-countdown, .hero-actions')) return
       for (let i = 0; i < 3; i++) {
         const ring = document.createElement('div')
         ring.style.cssText = `
@@ -318,13 +357,11 @@ export default function Hero() {
           <span className="bbau">BBAU</span>
         </h1>
 
-        <div className="hero-theme">
-          <span className="theme-word">Innovation</span>
+        {/* Countdown Timer */}
+        <div className="hero-countdown">
+          <p className="countdown-date-label">4 May 2026 · 9:00 AM</p>
+          <CountdownTimer />
         </div>
-
-        <p className="hero-sub">
-          A platform to share ideas that Challenge, Inspire, and Ignite change.
-        </p>
 
         <div className="hero-actions">
           <Link to="/register" className="hero-btn primary">

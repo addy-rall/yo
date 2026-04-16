@@ -6,14 +6,17 @@ import rahulImg from '../assets/img2.png';
 import nadiaImg from '../assets/img3.png';
 import arjunImg from '../assets/img4.png';
 import image1 from '../assets/image1.png';
+import imagk from '../assets/imgk.png';
 
 const speakers = [
-  { id: '01', name: 'Vijendra Chauhan', role: 'AI Researcher', org: 'IIT Delhi', img: arjunImg, bio: 'A pioneering researcher in ethical AI with 15+ years of experience at leading tech institutions.', color: '#e62b1e' },
-  { id: '02', name: 'Gajendra Purohit', role: 'Entrepreneur', org: 'FutureTech Labs', img: nadiaImg, bio: 'Serial entrepreneur and author. Mentored 8,000+ students through startup programmes.', color: '#e62b1e' },
-  { id: '03', name: 'speaker3', role: 'Neuroscientist', org: 'AIIMS Delhi', img: rahulImg, bio: 'Renowned for research on memory. TED talk has over 4 million views.', color: '#e62b1e' },
-  { id: '04', name: 'Arjun Verma', role: 'Climate Activist', org: 'GreenFuture India', img: priyaImg, bio: 'Named one of Forbes 30 Under 30 for his environmental movement work.', color: '#e62b1e' },
-  { id: '05', name: 'Speaker 5', role: 'Innovator', org: 'Org 5', img: image1, bio: 'Leading breakthroughs in sustainable energy and modular design.', color: '#e62b1e' },
-  { id: '06', name: 'Speaker 6', role: 'Tech Evangelist', org: 'Org 6', img: image1, bio: 'Specialist in decentralized networks and the future of digital identity.', color: '#e62b1e' },
+  { id: '01', name: 'Dr. Vijendra Chauhan', role: 'AI Researcher', org: 'IIT Delhi', img: arjunImg, bio: 'A pioneering researcher in ethical AI with 15+ years of experience at leading tech institutions.', color: '#e62b1e' },
+  { id: '02', name: 'Dr. Gajendra Purohit', role: 'Entrepreneur', org: 'FutureTech Labs', img: nadiaImg, bio: 'Serial entrepreneur and author. Mentored 8,000+ students through startup programmes.', color: '#e62b1e' },
+  { id: '03', name: 'Dr. Yogeshwar Nath', role: 'Assistant Profesor and Scientist at NASA', org: 'IIT Jodhpur', img: rahulImg, bio: 'Renowned for research on memory. TED talk has over 4 million views.', color: '#e62b1e' },
+  { id: '04', name: 'Mr. Aditya Ranjan', role: 'Climate Activist', org: 'GreenFuture India', img: priyaImg, bio: 'Named one of Forbes 30 Under 30 for his environmental movement work.', color: '#e62b1e' },
+  { id: '05', name: 'Mr. Deepak Wadhwa', role: 'Innovator', org: 'Org 5', img: image1, bio: 'Leading breakthroughs in sustainable energy and modular design.', color: '#e62b1e' },
+  
+  { id: '06', name: 'Mr. Kiran Kumar', role: 'Tech Evangelist', org: 'Org 6', img: imagk , bio: 'Specialist in decentralized networks and the future of digital identity.', color: '#e62b1e' },
+  { id: '07', name: 'Mr. Debojit Sen', role: 'Tech Evangelist', org: 'Org 7', img: image1, bio: 'Debojit Sen is the Founder & CEO of Crack-ED, building job-ready education at scale. A first-generation entrepreneur backed by CarDekho Group, he is bridging India’s employability gap through outcome-driven programs, strong corporate partnerships, and a fast-scaling, profitable model shaping future-ready careers. He is a recipient of the BW Disrupt 40 Under 40 Award, and under his leadership, Crack-ED was honored at the 7th BW Emerging Business Awards as the Best Skill Development Institution (MSME Category), recognizing its impact in transforming youth employability across India.', color: '#e62b1e' }
 ];
 
 export default function UniqueSpeakersPage() {

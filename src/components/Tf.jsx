@@ -1,150 +1,183 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-// Assets
-import img4 from '../assets/img4.png';
-import k from '../assets/y.png';
+// ─── IMAGE IMPORTS ───
+// These assume the images are in the same folder or 'src' directory
+import  honorImg from '../assets/img4.png';
+import  chiefImg from '../assets/y.png';
+import priyaimg from '../assets/img1.png';
 
-const ChiefGuestSection = () => {
-  const [isMobile, setIsMobile] = useState(false);
+const GUESTS = [
+  {
+    type: "Chief Guest",
+    name: "Prof. (Dr.) Raj Kumar Mittal",
+    designation: "Vice Chancellor, BBAU, Lucknow",
+    image: chiefImg 
+  },
+  {
+    type: "Guest of Honour",
+    name: "Dr. Vijendra Chauhan",
+    designation: "Distinguished Guest",
+    image: honorImg 
+  },
+  {
+    type: "Guest of Honour",
+    name: "Dr. Sanjay Kumar Singh",
+    designation: "Honorary Speaker",
+    image: honorImg
+  },
+  {
+    type: "Guest of Honour",
+    name: "Prof. Shishir Dixit",
+    designation: "Honorary Speaker",
+    image: honorImg
+  },{
+    type: "Guest of Honour",
+    name: "Mr. Aditya Ranjan",
+    designation: "Honorary Speaker",
+    image: priyaimg
+  }
+];
 
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const theme = {
-    fontFamily: "'Poppins', sans-serif",
-    tedRed: '#ED1C24',
-    darkBg: '#0F0F0F',
-    white: '#FFFFFF',
-  };
-
-  const styles = {
-    fontImport: `
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
-    `,
-    container: {
-      backgroundColor: theme.darkBg,
-      padding: isMobile ? '20px 10px' : '40px 20px', // Reduced padding
-      color: theme.white,
-      textAlign: 'center',
-      fontFamily: theme.fontFamily,
-    },
-    // Split color heading with camelCase
-    heading: {
-      fontSize: isMobile ? '32px' : '56px',
-      fontWeight: '900',
-      textTransform: 'none', // Allows camelCase to show
-      letterSpacing: '-1px',
-      marginBottom: '40px',
-    },
-    redText: { color: theme.tedRed },
-    whiteText: { color: theme.white },
-
-    grid: {
-      display: 'flex',
-      flexDirection: isMobile ? 'column' : 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-      gap: isMobile ? '50px' : '80px',
-      maxWidth: '1100px',
-      margin: '0 auto',
-    },
-    // Square Frame Decoration
-    imageWrapper: {
-      position: 'relative',
-      padding: '10px',
-      border: `2px solid ${theme.tedRed}`, // Red border around photo
-      display: 'inline-block',
-    },
-    // Decorative "Corner" or "Frame" offset
-    decoration: {
-      position: 'absolute',
-      top: '-10px',
-      right: '-10px',
-      width: '40px',
-      height: '40px',
-      borderTop: `4px solid ${theme.tedRed}`,
-      borderRight: `4px solid ${theme.tedRed}`,
-      zIndex: 1,
-    },
-    imageContainer: {
-      width: isMobile ? '260px' : '320px',
-      height: isMobile ? '300px' : '380px',
-      overflow: 'hidden',
-      backgroundColor: '#1a1a1a',
-    },
-    image: {
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-      filter: 'grayscale(20%)', // Optional: adds to the serious TED tone
-    },
-    info: {
-      marginTop: '20px',
-      textAlign: isMobile ? 'center' : 'left',
-    },
-    name: {
-      fontSize: '22px',
-      fontWeight: '700',
-      margin: '0',
-      textTransform: 'uppercase',
-    },
-    title: {
-      fontSize: '14px',
-      color: theme.tedRed,
-      margin: '5px 0 0',
-      fontWeight: '600',
-      letterSpacing: '1px',
-    }
-  };
-
+export default function VIPGuestSection() {
   return (
     <>
-      <style>{styles.fontImport}</style>
-      <section style={styles.container}>
+      <style>{`
+        .vip-section {
+          padding: 80px 20px;
+          background: #000;
+          color: #F4EFE9;
+          font-family: 'Inter', sans-serif;
+          overflow: hidden;
+        }
+        .vip-container {
+          max-width: 1200px;
+          margin: 0 auto;
+        }
         
-        <h2 style={styles.heading}>
-          <span style={styles.redText}>Chief </span>
+        /* ── LARGE GRADIENT HEADING ── */
+        .vip-heading {
+          font-size: clamp(2rem, 9vw, 4.5rem); 
+          font-weight: 800;
+          line-height: 0.75;
+          margin-bottom: 60px;
+          text-transform: uppercase;
+          letter-spacing: -3px;
+          text-align: center;
+          /* White to Dull Red Gradient */
+          background: linear-gradient(to bottom, #FFFFFF 30%, #B22222 90%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        /* Desktop: Horizontal Line */
+        .vip-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+        }
+        .vip-card {
+          background: rgba(255,255,255,0.03);
+          border: 1px solid rgba(255,255,255,0.1);
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .vip-card:hover {
+          transform: scale(1.02);
+          border-color: #B22222;
+          background: rgba(255,255,255,0.05);
+        }
+        .vip-image-wrap {
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          overflow: hidden;
+          background: #111;
+        }
+        .vip-image-wrap img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+        .vip-info {
+          padding: 25px;
+          text-align: center;
+        }
+        .vip-type {
+          font-size: 0.75rem;
+          color: #B22222;
+          text-transform: uppercase;
+          letter-spacing: 4px;
+          margin-bottom: 10px;
+          display: block;
+          font-weight: 700;
+        }
+        .vip-name {
+          font-size: 1.3rem;
+          margin: 0 0 6px 0;
+          font-weight: 800;
+          color: #FFF;
+        }
+        .vip-designation {
+          font-size: 0.85rem;
+          color: #999;
+          line-height: 1.4;
+        }
+
+        /* Phone View: Horizontal Scrolling */
+        @media (max-width: 850px) {
+          .vip-heading {
+            text-align: left;
+            font-size: 3.5rem;
+            margin-bottom: 40px;
+          }
+          .vip-grid {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding-bottom: 40px;
+            margin: 0 -20px;
+            padding-left: 20px;
+            -webkit-overflow-scrolling: touch;
+          }
+          .vip-grid::-webkit-scrollbar {
+            height: 5px;
+          }
+          .vip-grid::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+          }
+          .vip-grid::-webkit-scrollbar-thumb {
+            background: #B22222;
+            border-radius: 10px;
+          }
+          .vip-card {
+            min-width: 80%; 
+            scroll-snap-align: center;
+          }
+        }
+      `}</style>
+
+      <section className="vip-section">
+        <div className="vip-container">
+          <h2 className="vip-heading">
+            EVENT<br />DIGNITARIES
+          </h2>
           
-          <span style={styles.whiteText}>Guests</span>
-        </h2>
-
-        <div style={styles.grid}>
-          {/* Guest 1 */}
-          <div style={{ textAlign: 'center' }}>
-            <div style={styles.imageWrapper}>
-              <div style={styles.decoration}></div>
-              <div style={styles.imageContainer}>
-                <img src={img4} alt="Chief Guest" style={styles.image} />
+          <div className="vip-grid">
+            {GUESTS.map((guest, index) => (
+              <div key={index} className="vip-card">
+                <div className="vip-image-wrap">
+                  <img src={guest.image} alt={guest.name} />
+                </div>
+                <div className="vip-info">
+                  <span className="vip-type">{guest.type}</span>
+                  <h3 className="vip-name">{guest.name}</h3>
+                  <p className="vip-designation">{guest.designation}</p>
+                </div>
               </div>
-            </div>
-            <div style={styles.info}>
-              <h3 style={styles.name}>Guest Name One</h3>
-              <p style={styles.title}>CHIEF GUEST</p>
-            </div>
+            ))}
           </div>
-
-          {/* Guest 2 */}
-          <div style={{ textAlign: 'center' }}>
-            <div style={styles.imageWrapper}>
-              <div style={styles.decoration}></div>
-              <div style={styles.imageContainer}>
-                <img src={k} alt="Honorable Guest" style={styles.image} />
-              </div>
-            </div>
-            <div style={styles.info}>
-              <h3 style={styles.name}>Guest Name Two</h3>
-              <p style={styles.title}>SPECIAL INVITEE</p>
-            </div>
-          </div>
-
         </div>
       </section>
     </>
   );
-};
-
-export default ChiefGuestSection;
+}

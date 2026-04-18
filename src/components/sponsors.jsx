@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import sponsor1 from '../assets/stall1.png';
+import sponsor1 from '../assets/stall1.PNG';
 import sponsor2 from '../assets/cent.png';
 import sponsor3 from '../assets/kanga.jpeg';
 

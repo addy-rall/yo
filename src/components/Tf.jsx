@@ -23,7 +23,7 @@ const GUESTS = [
 
   {
     type: "Guest of Honour",
-    name: "Prof. Shishir Dixit",
+    name: "Mr. Shishir Dixit",
     designation: "Honorary Speaker",
     image: who
   },

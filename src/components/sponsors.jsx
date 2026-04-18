@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
+import sponsor1 from '../assets/stall.png';
+import sponsor2 from '../assets/cent.png';
+import sponsor3 from '../assets/kang.png';
+
 const partners = {
-  mediaPartner: [
-    { name: 'Media Partner Name', logo: 'https://via.placeholder.com/200x100?text=Media+Partner' },
-  ],
-  stallPartner: [
-    { name: 'Stall Partner Name', logo: 'https://via.placeholder.com/200x100?text=Stall+Partner' },
+  mainSponsor: [
+    { name: 'Sponsor One',   logo: sponsor1 },
+    { name: 'Sponsor Two',   logo: sponsor2 },
+    { name: 'Sponsor Three', logo: sponsor3 },
   ],
 };
 
 export default function Partners() {
-  const [hovered, setHovered] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -22,7 +24,7 @@ export default function Partners() {
 
   const theme = {
     fontFamily: "'Poppins', sans-serif",
-    dullRed: '#B32D2D', 
+    dullRed: '#B32D2D',
     darkBg: '#0F0F0F',
     white: '#FFFFFF',
   };
@@ -33,7 +35,6 @@ export default function Partners() {
     `,
     section: {
       backgroundColor: theme.darkBg,
-      // Increased vertical padding (80px/120px)
       padding: isMobile ? '80px 24px' : '120px 40px',
       fontFamily: theme.fontFamily,
       textAlign: 'center',
@@ -42,104 +43,88 @@ export default function Partners() {
     heading: {
       fontSize: isMobile ? '36px' : '52px',
       fontWeight: '900',
-      // Increased space below the main heading
       marginBottom: isMobile ? '60px' : '80px',
       letterSpacing: '-1px',
     },
-    redText: { 
+    redText: {
       color: theme.dullRed,
-      marginRight: '12px' 
-    },
-    grid: {
-      display: 'flex',
-      flexDirection: isMobile ? 'column' : 'row',
-      justifyContent: 'center',
-      gap: isMobile ? '60px' : '100px', // Increased gap between categories
-      maxWidth: '1100px',
-      margin: '0 auto',
-    },
-    categoryWrapper: {
-      flex: 1,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
+      marginRight: '12px',
     },
     categoryTitle: {
       fontSize: '13px',
       letterSpacing: '3px',
       textTransform: 'uppercase',
       color: '#666',
-      // Increased padding inside the category titles
-      marginBottom: '35px',
+      marginBottom: '40px',
       borderBottom: `1px solid ${theme.dullRed}`,
       paddingBottom: '8px',
+      display: 'inline-block',
     },
-    frame: (id) => ({
-      position: 'relative',
-      // Added internal padding to the square frame
-      padding: '15px',
-      border: `2px solid ${hovered === id ? theme.dullRed : '#222'}`,
-      transition: 'all 0.3s ease',
+    sponsorCardsRow: {
+      display: 'flex',
+      flexDirection: isMobile ? 'column' : 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: isMobile ? '40px' : '64px',
+      flexWrap: 'wrap',
+      maxWidth: '1200px',
+      margin: '0 auto',
+    },
+    frame: {
+      padding: '24px',
+      border: '2px solid #222',
       backgroundColor: '#050505',
-    }),
+    },
     imageContainer: {
-      width: isMobile ? '220px' : '260px',
-      height: '130px',
+      width: isMobile ? '240px' : '320px',
+      height: isMobile ? '150px' : '200px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       overflow: 'hidden',
     },
-    logo: (id) => ({
-      maxWidth: '80%',
-      maxHeight: '80%',
-      filter: hovered === id ? 'grayscale(0%) brightness(1)' : 'grayscale(100%) brightness(0.6)',
-      transition: 'all 0.4s ease',
-    }),
+    logo: {
+      maxWidth: '90%',
+      maxHeight: '90%',
+      objectFit: 'contain',
+    },
     partnerName: {
       marginTop: '20px',
       fontSize: '15px',
       fontWeight: '600',
       color: theme.white,
-      letterSpacing: '0.5px'
-    }
+      letterSpacing: '0.5px',
+    },
   };
 
-  const renderCategory = (title, data, idPrefix) => (
-    <div style={styles.categoryWrapper}>
-      <h3 style={styles.categoryTitle}>{title}</h3>
-      {data.map((partner, idx) => {
-        const id = `${idPrefix}-${idx}`;
-        return (
-          <div 
-            key={id} 
-            onMouseEnter={() => setHovered(id)} 
-            onMouseLeave={() => setHovered(null)}
-            style={{ cursor: 'pointer' }}
-          >
-            <div style={styles.frame(id)}>
-              <div style={styles.imageContainer}>
-                <img src={partner.logo} alt={partner.name} style={styles.logo(id)} />
-              </div>
-            </div>
-            <p style={styles.partnerName}>{partner.name}</p>
-          </div>
-        );
-      })}
+  const renderCard = (partner, id) => (
+    <div
+      key={id}
+      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+    >
+      <div style={styles.frame}>
+        <div style={styles.imageContainer}>
+          <img src={partner.logo} alt={partner.name} style={styles.logo} />
+        </div>
+      </div>
+      <p style={styles.partnerName}>{partner.name}</p>
     </div>
   );
 
   return (
     <section style={styles.section}>
       <style>{styles.fontImport}</style>
-      
+
       <h2 style={styles.heading}>
         <span style={styles.redText}>Our</span>Partners
       </h2>
 
-      <div style={styles.grid}>
-        {renderCategory('Media Partner', partners.mediaPartner, 'media')}
-        {renderCategory('Stall Partner', partners.stallPartner, 'stall')}
+      <h3 style={styles.categoryTitle}>Sponsors</h3>
+
+      <div style={styles.sponsorCardsRow}>
+        {partners.mainSponsor.map((partner, idx) =>
+          renderCard(partner, `main-${idx}`)
+        )}
       </div>
     </section>
   );

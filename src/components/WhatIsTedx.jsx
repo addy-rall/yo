@@ -3,7 +3,7 @@ import clgImage from '../assets/clg.png'
 
 const VIDEO_ID = 'd0NHOpeczUU'
 
-// --- UPGRADED 3D CUBE (matching the image style) ---
+// --- UPGRADED 3D CUBE ---
 function ThemeCube({ isMobile }) {
   const sceneRef = useRef(null)
   const cubeRef = useRef(null)
@@ -81,7 +81,6 @@ function ThemeCube({ isMobile }) {
   const white = { color: '#fff' }
   const red = { color: '#c82828' }
 
-  // Scan-line overlay
   const scanLines = (
     <div style={{
       position: 'absolute', inset: 0, pointerEvents: 'none',
@@ -90,7 +89,6 @@ function ThemeCube({ isMobile }) {
     }} />
   )
 
-  // Corner brackets
   const corners = (
     <>
       {[['0','0','right','bottom'],['0','auto','right','top'],['auto','0','left','bottom'],['auto','auto','left','top']].map(([b,r,bw,rw],i) => (
@@ -110,7 +108,6 @@ function ThemeCube({ isMobile }) {
   )
 
   const faces = [
-    // FRONT: BBAU main face
     face(`rotateY(0deg) translateZ(${tz}px)`, (
       <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-start', padding:'14px', width:'100%', height:'100%', position:'relative', boxSizing:'border-box' }}>
         {scanLines}{corners}
@@ -122,7 +119,6 @@ function ThemeCube({ isMobile }) {
         </div>
       </div>
     )),
-    // BACK
     face(`rotateY(180deg) translateZ(${tz}px)`, (
       <div style={{ position:'relative', width:'100%', height:'100%', display:'flex', alignItems:'center', justifyContent:'center' }}>
         {scanLines}{corners}
@@ -132,7 +128,6 @@ function ThemeCube({ isMobile }) {
         </div>
       </div>
     )),
-    // RIGHT
     face(`rotateY(90deg) translateZ(${tz}px)`, (
       <div style={{ position:'relative', width:'100%', height:'100%', display:'flex', flexDirection:'column', alignItems:'flex-start', justifyContent:'flex-end', padding:'12px', boxSizing:'border-box' }}>
         {scanLines}{corners}
@@ -140,7 +135,6 @@ function ThemeCube({ isMobile }) {
         <div style={{ ...poppins, ...red, fontWeight:'900', fontSize: isMobile ? '28px':'40px', lineHeight:0.9 }}>DIS-<br/>RUPT</div>
       </div>
     )),
-    // LEFT
     face(`rotateY(-90deg) translateZ(${tz}px)`, (
       <div style={{ position:'relative', width:'100%', height:'100%', display:'flex', flexDirection:'column', alignItems:'flex-end', justifyContent:'flex-start', padding:'12px', boxSizing:'border-box' }}>
         {scanLines}{corners}
@@ -148,7 +142,6 @@ function ThemeCube({ isMobile }) {
         <div style={{ ...mono, color:'#555', fontSize: isMobile ? '8px':'10px', letterSpacing:'2px', marginTop:'auto' }}>2026</div>
       </div>
     )),
-    // TOP: "IDEAS WORTH SPREADING"
     face(`rotateX(90deg) translateZ(${tz}px)`, (
       <div style={{ position:'relative', width:'100%', height:'100%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center' }}>
         {scanLines}{corners}
@@ -158,7 +151,6 @@ function ThemeCube({ isMobile }) {
         <div style={{ ...poppins, ...white, fontWeight:'900', fontSize: isMobile ? '28px':'42px', marginTop:'6px' }}>2026</div>
       </div>
     )),
-    // BOTTOM: SEASON
     face(`rotateX(-90deg) translateZ(${tz}px)`, (
       <div style={{ position:'relative', width:'100%', height:'100%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center' }}>
         {scanLines}{corners}
@@ -179,14 +171,12 @@ function ThemeCube({ isMobile }) {
           transformStyle:'preserve-3d', willChange:'transform', cursor:'pointer',
           transition: burst ? 'transform 0.1s' : 'none',
           filter: burst ? 'brightness(2) saturate(2)' : 'none',
-          animation: burst ? 'none' : undefined
         }}
       >
         {faces.map((f, i) => (
           <div key={i} style={f.style}>{f.children}</div>
         ))}
       </div>
-
     </div>
   )
 }
@@ -223,26 +213,99 @@ function TedxVisual({ isMobile }) {
   )
 }
 
+// ── ExternalLinkIcon ──
+const ExternalLinkIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft:'6px', verticalAlign:'middle' }}>
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    <polyline points="15 3 21 3 21 9" />
+    <line x1="10" y1="14" x2="21" y2="3" />
+  </svg>
+)
+
 const sections = [
-  { id:'tedx', eyebrow:'About', title:<>What is <span style={{ color:'#b32d2d' }}>TEDx</span>?</>, desc:['TEDx is a global initiative designed to bring the spirit of TED to local communities.','Organized independently, these events spark meaningful conversations.'], pills:['Technology','Entertainment','Design'], visual:'tedx' },
-  { id:'bbau', eyebrow:'The University', title:<>BBAU Lucknow</>, desc:['Babasaheb Bhimrao Ambedkar University is a central university in Lucknow.','Established in 1996, it stands as a beacon of research and social justice.'], pills:['Central University','Lucknow'], visual:'bbau' },
-  { id:'tedxbbau', eyebrow:'Our Event', title:<>What is <span style={{ color:'#b32d2d' }}>TEDxBBAU</span>?</>, desc:['TEDxBBAU brings the TED spirit to BBAU Lucknow.','We focus on sharing powerful ideas from change-makers that resonate far beyond the campus.'], pills:['Innovation','Community'], visual:'tedxbbau' }
+  {
+    id: 'this',
+    eyebrow: 'About',
+    title: <> What is <span style={{ color:'#b32d2d' }}>TEDx</span>?</>,
+    desc: [
+      'TEDx is a global initiative designed to bring the spirit of TED to local communities.',
+      'Organized independently, these events spark meaningful conversations.',
+    ],
+    pills: ['Technology', 'Entertainment', 'Design'],
+    visual: 'tedx',
+    websiteBtn: null,
+  },
+  {
+    id: 'bbau',
+    eyebrow: 'The University',
+    title: <>BBAU Lucknow</>,
+    desc: [
+      'Babasaheb Bhimrao Ambedkar University is a central university in Lucknow.',
+      'Established in 1996, it stands as a beacon of research and social justice.',
+    ],
+    pills: ['Central University', 'Lucknow'],
+    visual: 'bbau',
+    // ── BBAU website button ──
+    websiteBtn: { label: 'Visit BBAU Website', href: 'https://www.bbau.ac.in' },
+  },
+  {
+    id: 'tedxbbau',
+    eyebrow: 'Our Event',
+    title: <> What is <span style={{ color:'#b32d2d' }}>TEDxBBAU</span>?</>,
+    desc: [
+      'TEDxBBAU brings the TED spirit to BBAU Lucknow.',
+      'We focus on sharing powerful ideas from change-makers that resonate far beyond the campus.',
+    ],
+    pills: ['Innovation', 'Community'],
+    visual: 'tedxbbau',
+    websiteBtn: null,
+  },
 ]
 
 export default function WhatIsTedx() {
   const [active, setActive] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
 
-  // Touch swipe state
   const touchStartX = useRef(null)
   const touchStartY = useRef(null)
   const isDragging = useRef(false)
+
+  // Refs for each panel so we can scroll to them by id
+  const panelRefs = useRef({})
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768)
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // ── Handle deep-link scrolling from navbar anchor clicks ──
+  // When the page loads or hash changes, jump to the right panel
+  useEffect(() => {
+    const jumpToHash = () => {
+      const hash = window.location.hash.replace('#', '')
+      const idx = sections.findIndex(s => s.id === hash)
+      if (idx !== -1) {
+        setActive(idx)
+        // Small delay so the slider has moved before we scroll
+        setTimeout(() => {
+          panelRefs.current[hash]?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }, 100)
+      }
+    }
+    jumpToHash()
+    window.addEventListener('hashchange', jumpToHash)
+    return () => window.removeEventListener('hashchange', jumpToHash)
+  }, [])
+
+  // Also expose each section's id as a real DOM element for scrollIntoView
+  // used by the navbar's handleAnchorClick
+  useEffect(() => {
+    sections.forEach(s => {
+      const el = panelRefs.current[s.id]
+      if (el) el.id = s.id
+    })
   }, [])
 
   const goNext = useCallback(() => setActive(a => (a + 1) % sections.length), [])
@@ -258,16 +321,11 @@ export default function WhatIsTedx() {
     if (touchStartX.current === null) return
     const dx = e.touches[0].clientX - touchStartX.current
     const dy = e.touches[0].clientY - touchStartY.current
-    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
-      isDragging.current = true
-    }
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) isDragging.current = true
   }
 
   const onTouchEnd = (e) => {
-    if (!isDragging.current || touchStartX.current === null) {
-      touchStartX.current = null
-      return
-    }
+    if (!isDragging.current || touchStartX.current === null) { touchStartX.current = null; return }
     const dx = e.changedTouches[0].clientX - touchStartX.current
     if (dx < -40) goNext()
     else if (dx > 40) goPrev()
@@ -282,22 +340,39 @@ export default function WhatIsTedx() {
     panel: { width:`${100 / sections.length}%`, display:'flex', flexDirection: isMobile ? 'column':'row', gap: isMobile ? '40px':'70px', alignItems:'center', boxSizing:'border-box' },
     visualWrap: { flex:1.2, width:'100%', height: isMobile ? '300px':'420px', borderRadius:'12px', overflow:'hidden', background:'#0a0a0a', border:'1px solid #222' },
     textWrap: { flex:1, textAlign: isMobile ? 'center':'left' },
-    arrow: (side) => ({ position:'absolute', top:'50%', transform:'translateY(-50%)', background:'rgba(10,10,10,0.8)', border:'1px solid #b32d2d', color:'#fff', width:'50px', height:'50px', borderRadius:'50%', cursor:'pointer', zIndex:10, [side==='L'?'left':'right']:'15px', display: isMobile ? 'none':'flex', alignItems:'center', justifyContent:'center' })
+    arrow: (side) => ({ position:'absolute', top:'50%', transform:'translateY(-50%)', background:'rgba(10,10,10,0.8)', border:'1px solid #b32d2d', color:'#fff', width:'50px', height:'50px', borderRadius:'50%', cursor:'pointer', zIndex:10, [side==='L'?'left':'right']:'15px', display: isMobile ? 'none':'flex', alignItems:'center', justifyContent:'center' }),
+    websiteBtn: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      marginTop: '24px',
+      padding: '10px 22px',
+      border: '1px solid #b32d2d',
+      borderRadius: '4px',
+      color: '#fff',
+      fontSize: '13px',
+      fontWeight: '700',
+      fontFamily: 'Poppins, sans-serif',
+      letterSpacing: '0.5px',
+      textDecoration: 'none',
+      background: 'transparent',
+      transition: 'background 0.2s, color 0.2s',
+      cursor: 'pointer',
+    },
   }
 
   const visuals = {
-    tedx: () => <TedxVisual isMobile={isMobile} />,
-    bbau: () => <img src={clgImage} alt="BBAU Lucknow" style={{ width:'100%', height:'100%', objectFit:'cover' }} />,
-    tedxbbau: () => <ThemeCube isMobile={isMobile} />
+    tedx:     () => <TedxVisual isMobile={isMobile} />,
+    bbau:     () => <img src={clgImage} alt="BBAU Lucknow" style={{ width:'100%', height:'100%', objectFit:'cover' }} />,
+    tedxbbau: () => <ThemeCube isMobile={isMobile} />,
   }
 
   return (
+    // ── id="this" stays on the outer section so "About TEDx" anchor still works ──
     <section style={styles.wrapper} id="this">
       <div style={styles.container}>
         <button style={styles.arrow('L')} onClick={goPrev}>←</button>
         <button style={styles.arrow('R')} onClick={goNext}>→</button>
 
-        {/* Swipeable track */}
         <div
           style={{ overflow:'hidden', touchAction:'pan-y' }}
           onTouchStart={onTouchStart}
@@ -308,15 +383,40 @@ export default function WhatIsTedx() {
             {sections.map((s) => {
               const Visual = visuals[s.visual]
               return (
-                <div key={s.id} style={styles.panel}>
+                // ── Each panel gets its own ref AND id for anchor scrolling ──
+                <div
+                  key={s.id}
+                  id={s.id}
+                  ref={el => { panelRefs.current[s.id] = el }}
+                  style={styles.panel}
+                >
                   <div style={styles.visualWrap}><Visual /></div>
                   <div style={styles.textWrap}>
                     <p style={{ color:'#b32d2d', textTransform:'uppercase', fontSize:'13px', letterSpacing:'3px', fontWeight:'600', marginBottom:'10px' }}>{s.eyebrow}</p>
                     <h2 style={{ color:'#fff', fontSize: isMobile ? '32px':'48px', fontWeight:'800', margin:'0 0 20px', fontFamily:'Poppins, sans-serif' }}>{s.title}</h2>
-                    {s.desc.map((d, i) => <p key={i} style={{ color:'#aaa', fontSize:'16px', lineHeight:'1.8', marginBottom:'20px' }}>{d}</p>)}
+                    {s.desc.map((d, i) => (
+                      <p key={i} style={{ color:'#aaa', fontSize:'16px', lineHeight:'1.8', marginBottom:'20px' }}>{d}</p>
+                    ))}
                     <div style={{ display:'flex', gap:'12px', justifyContent: isMobile ? 'center':'flex-start', flexWrap:'wrap', marginTop:'10px' }}>
-                      {s.pills.map(p => <span key={p} style={{ border:'1px solid #333', padding:'6px 16px', borderRadius:'30px', color:'#b32d2d', fontSize:'12px', fontWeight:'600', background:'#000' }}>{p}</span>)}
+                      {s.pills.map(p => (
+                        <span key={p} style={{ border:'1px solid #333', padding:'6px 16px', borderRadius:'30px', color:'#b32d2d', fontSize:'12px', fontWeight:'600', background:'#000' }}>{p}</span>
+                      ))}
                     </div>
+
+                    {/* ── BBAU website button ── */}
+                    {s.websiteBtn && (
+                      <a
+                        href={s.websiteBtn.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={styles.websiteBtn}
+                        onMouseEnter={e => { e.currentTarget.style.background = '#b32d2d' }}
+                        onMouseLeave={e => { e.currentTarget.style.background = 'transparent' }}
+                      >
+                        {s.websiteBtn.label}
+                        <ExternalLinkIcon />
+                      </a>
+                    )}
                   </div>
                 </div>
               )
@@ -324,7 +424,7 @@ export default function WhatIsTedx() {
           </div>
         </div>
 
-        {/* Dot indicators — tap to jump on mobile */}
+        {/* Dot indicators */}
         <div style={{ display:'flex', gap:'12px', justifyContent:'center', marginTop: isMobile ? '40px':'60px' }}>
           {sections.map((_, i) => (
             <div
@@ -335,7 +435,6 @@ export default function WhatIsTedx() {
           ))}
         </div>
 
-        {/* Mobile swipe hint — shown only once */}
         {isMobile && (
           <p style={{ textAlign:'center', color:'#444', fontSize:'11px', letterSpacing:'2px', fontFamily:'"Courier New", monospace', marginTop:'16px', textTransform:'uppercase' }}>
             ← swipe to explore →

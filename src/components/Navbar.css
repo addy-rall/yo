@@ -22,11 +22,26 @@
   justify-content: space-between;
 }
 
-/* ── LOGO (UNCHANGED) ── */
+/* ── LOGO ── */
+.navbar-logo-btn {
+  display: block;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  height: 80px;
+  flex-shrink: 0;
+}
+
 .navbar-logo-img {
+  width: auto;
   max-width: 320px;
   height: 80px;
+  display: block;
   object-fit: contain;
+  mix-blend-mode: screen;
+  filter: brightness(1.1) contrast(1.1);
 }
 
 /* ── DESKTOP LINKS ── */
@@ -43,7 +58,8 @@
   font-size: 0.82rem;
   font-weight: 600;
   text-transform: uppercase;
-  background: none; border: none;
+  background: none;
+  border: none;
   cursor: pointer;
 }
 
@@ -62,57 +78,38 @@
   display: none;
 }
 
+/* Desktop: open on hover OR when .show is toggled via click */
 @media (min-width: 769px) {
   .dropdown-container:hover .dropdown-menu { display: block; }
+  .dropdown-menu.show { display: block; }
 }
 
 .dropdown-item {
-  display: block; width: 100%;
+  display: block;
+  width: 100%;
   padding: 12px 24px;
   color: #888 !important;
   text-align: left;
-  background: transparent; border: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
 }
 
-/* ── MOBILE STYLES ── */
-@media (max-width: 768px) {
-  .navbar-inner { height: 70px; padding: 0 24px; }
-  
-  .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; }
-  .hamburger span { width: 24px; height: 2px; background: #fff; }
+.dropdown-item:hover { color: #fff !important; }
 
-  .navbar-links {
-    display: none;
-    position: absolute; top: 70px; left: 0; right: 0;
-    flex-direction: column;
-    align-items: center;
-    background: rgba(10, 10, 10, 0.98);
-    padding: 20px 0; gap: 15px;
-  }
-
-  .navbar-links.open { display: flex; }
-  .navbar-links li { width: 100%; text-align: center; }
-
-  .dropdown-menu {
-    position: static;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.03);
-    border: none;
-  }
-
-  .dropdown-menu.show { display: flex; flex-direction: column; }
-  .dropdown-item { text-align: center; padding: 15px 0; }
-  
-  .arrow-down.rotated { transform: rotate(180deg); display: inline-block; }
-}
 /* ── REGISTER BUTTON ── */
 .btn-register {
   position: relative;
   overflow: hidden;
-  isolation: isolate; /* Ensures the shimmer stays inside the button */
+  isolation: isolate;
   display: inline-block;
   color: #fff !important;
-  background: #b32318; /* TED Red */
+  background: #b32318;
   padding: 12px 28px;
   border-radius: 4px;
   font-family: 'Poppins', sans-serif;
@@ -125,7 +122,6 @@
   transition: background 0.3s, transform 0.2s;
 }
 
-/* Shimmer/Shine Effect */
 .btn-register::after {
   content: "";
   position: absolute;
@@ -154,8 +150,70 @@
   left: 150%;
 }
 
-/* ── MOBILE ALIGNMENT ── */
+/* ── HAMBURGER (hidden on desktop) ── */
+.hamburger {
+  display: none;
+}
+
+/* ── ARROW ── */
+.arrow-down {
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.arrow-down.rotated {
+  transform: rotate(180deg);
+}
+
+/* ── MOBILE STYLES ── */
 @media (max-width: 768px) {
+  .navbar-inner { height: 70px; padding: 0 24px; }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    display: block;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .hamburger span.cross:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger span.cross:nth-child(2) { opacity: 0; }
+  .hamburger span.cross:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .navbar-links {
+    display: none;
+    position: absolute;
+    top: 70px; left: 0; right: 0;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(10, 10, 10, 0.98);
+    padding: 20px 0;
+    gap: 15px;
+  }
+
+  .navbar-links.open { display: flex; }
+  .navbar-links li { width: 100%; text-align: center; }
+
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: none;
+  }
+
+  .dropdown-menu.show { display: flex; flex-direction: column; }
+  .dropdown-item { text-align: center; padding: 15px 0; }
+
   .nav-register-li {
     width: 100%;
     padding: 20px 0;
@@ -164,40 +222,8 @@
   }
 
   .btn-register {
-    width: 80%; /* Makes it a large, tappable bar on mobile */
+    width: 80%;
     text-align: center;
     padding: 16px 0;
   }
-}
-/* ── THE LOGO IMAGE FIX ── */
-.navbar-logo-img {
-  width: auto;
-  max-width: 320px;
-  height: 80px;
-  display: block;
-  object-fit: contain;
-
-  /* This is the magic line that removes the white background */
-  mix-blend-mode: screen; 
-  
-  /* Optional: Boost contrast if the logo looks a bit faint after blending */
-  filter: brightness(1.1) contrast(1.1); 
-}
-
-/* ── THE LOGO WRAPPER ── */
-.navbar-logo-btn {
-  display: block;
-  background: transparent; /* Ensure no background here */
-  border: none;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  height: 80px;
-  flex-shrink: 0;
-}
-.navbar,
-.navbar *,
-.navbar *::before,
-.navbar *::after {
-  cursor: none !important;
 }

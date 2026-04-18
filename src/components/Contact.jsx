@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const styles = {
   page: {
@@ -235,12 +235,6 @@ const InstagramIcon = () => (
   </svg>
 );
 
-const FacebookIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-  </svg>
-);
-
 const YoutubeIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
     <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
@@ -248,29 +242,78 @@ const YoutubeIcon = () => (
   </svg>
 );
 
+const TedIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <rect x="2" y="8" width="20" height="8" rx="2" />
+    <text x="4" y="15" fontSize="7" fontWeight="900" fill="#0a0a0a" fontFamily="Arial Black">TED</text>
+  </svg>
+);
+
+// ── Quick links match Footer exactly ──
+const quickLinks = [
+  { label: "About",    path: "/#about",    isAnchor: true  },
+  { label: "Speakers", path: "/speakers",  isAnchor: false },
+  { label: "Sponsors", path: "/sponsors",  isAnchor: false },
+  { label: "Team",     path: "/#team",     isAnchor: true  },
+  { label: "Register", path: "/register",  isAnchor: false },
+];
+
+// ── Socials match Footer exactly ──
+const socials = [
+  {
+    icon: <LinkedInIcon />,
+    href: "https://in.linkedin.com/company/tedxbbau",
+    label: "LinkedIn",
+  },
+  {
+    icon: <InstagramIcon />,
+    href: "https://www.instagram.com/tedxbbau/",
+    label: "Instagram",
+  },
+  {
+    icon: <YoutubeIcon />,
+    href: "https://www.youtube.com/watch?v=NI3u07of3co&list=PLZ4vvmNukajzhLZyDYHc2O_qteW97R_Hw",
+    label: "YouTube",
+  },
+  {
+    icon: <TedIcon />,
+    href: "https://www.ted.com/",
+    label: "TED",
+  },
+];
+
 export default function Contact() {
   const [hoveredLink, setHoveredLink] = useState(null);
   const [mapBtnHover, setMapBtnHover] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible]         = useState(false);
+  const navigate = useNavigate();
 
-  // Scroll to top when Contact page mounts
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
     const t = setTimeout(() => setVisible(true), 80);
     return () => clearTimeout(t);
   }, []);
 
-  // Working Google Maps embed for BBAU, Lucknow
+  // Handles both route navigation and anchor scrolling — same logic as Footer
+  const handleNav = (path, isAnchor) => {
+    if (isAnchor) {
+      const id = path.replace("/#", "");
+      if (window.location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        }, 300);
+      } else {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate(path);
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+  };
+
   const mapSrc =
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3562.4332994464165!2d80.9231454752174!3d26.76246477673574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bf0280f76903d%3A0xc3f8372671994e1e!2sBabasaheb%20Bhimrao%20Ambedkar%20University!5e0!3m2!1sen!2sin!4v1712950000000!5m2!1sen!2sin";
-
-  const quickLinks = ["About TEDxBBAU", "Our Speakers", "Meet the Team", "Our Sponsors", "Register Now"];
-  const socials = [
-    { icon: <LinkedInIcon />, href: "#", label: "LinkedIn" },
-    { icon: <InstagramIcon />, href: "#", label: "Instagram" },
-    { icon: <FacebookIcon />, href: "#", label: "Facebook" },
-    { icon: <YoutubeIcon />, href: "#", label: "YouTube" },
-  ];
 
   return (
     <div style={styles.page}>
@@ -335,7 +378,14 @@ export default function Contact() {
               <div style={styles.iconCircle}><EmailIcon /></div>
               <div>
                 <p style={styles.contactLabel}>Email</p>
-                <p style={styles.contactValue}>tedx.bbau@gmail.com</p>
+                <a
+                  href="mailto:tedx.bbau@gmail.com"
+                  style={{ ...styles.contactValue, color: "rgba(255,255,255,0.65)", textDecoration: "none" }}
+                  onMouseEnter={e => e.currentTarget.style.color = "#e62b1e"}
+                  onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.65)"}
+                >
+                  tedx.bbau@gmail.com
+                </a>
               </div>
             </div>
 
@@ -343,8 +393,26 @@ export default function Contact() {
               <div style={styles.iconCircle}><PhoneIcon /></div>
               <div>
                 <p style={styles.contactLabel}>WhatsApp Only</p>
-                <p style={styles.contactValue}>+91 7906473285</p>
-                <p style={styles.contactValue}>+91 6394893708</p>
+                <a
+                  href="https://wa.me/917906473285"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ ...styles.contactValue, display: "block", textDecoration: "none", color: "rgba(255,255,255,0.65)" }}
+                  onMouseEnter={e => e.currentTarget.style.color = "#e62b1e"}
+                  onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.65)"}
+                >
+                  +91 7906473285
+                </a>
+                <a
+                  href="https://wa.me/916394893708"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ ...styles.contactValue, display: "block", textDecoration: "none", color: "rgba(255,255,255,0.65)" }}
+                  onMouseEnter={e => e.currentTarget.style.color = "#e62b1e"}
+                  onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.65)"}
+                >
+                  +91 6394893708
+                </a>
               </div>
             </div>
 
@@ -352,18 +420,26 @@ export default function Contact() {
               <div style={styles.iconCircle}><PinIcon /></div>
               <div>
                 <p style={styles.contactLabel}>Venue</p>
-                <p style={styles.venueHighlight}>Auditorium, Central Building</p>
-                <p style={styles.contactValue}>
+                <p style={styles.venueHighlight}>Atal Bihari Vajpayee Auditorium</p>
+                <a
+                  href="https://www.google.com/maps/place/Babasaheb+Bhimrao+Ambedkar+University/@26.7624648,80.9231455,17z"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ ...styles.contactValue, textDecoration: "none", color: "rgba(255,255,255,0.65)" }}
+                  onMouseEnter={e => e.currentTarget.style.color = "#e62b1e"}
+                  onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.65)"}
+                >
                   Babasaheb Bhimrao Ambedkar University,<br />
                   Vidya Vihar, Raebareli Rd, Lucknow,<br />
                   Uttar Pradesh 226025, India
-                </p>
+                </a>
               </div>
             </div>
           </div>
 
           <hr style={styles.divider} />
 
+          {/* ── FOLLOW US ── */}
           <h2 style={styles.followTitle}>Follow Us</h2>
           <div style={styles.socialRow}>
             {socials.map(({ icon, href, label }) => (
@@ -371,6 +447,8 @@ export default function Contact() {
                 key={label}
                 href={href}
                 aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={styles.socialIcon}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = "rgba(230,43,30,0.2)";
@@ -386,19 +464,20 @@ export default function Contact() {
             ))}
           </div>
 
+          {/* ── QUICK LINKS ── */}
           <div style={styles.quickLinksBar}>
             {quickLinks.map((link, i) => (
-              <span key={link} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <span key={link.label} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                 <a
-                  href="#"
                   style={{
                     ...styles.quickLink,
-                    ...(hoveredLink === link ? { textDecoration: "underline" } : {}),
+                    ...(hoveredLink === link.label ? { textDecoration: "underline" } : {}),
                   }}
-                  onMouseEnter={() => setHoveredLink(link)}
+                  onClick={() => handleNav(link.path, link.isAnchor)}
+                  onMouseEnter={() => setHoveredLink(link.label)}
                   onMouseLeave={() => setHoveredLink(null)}
                 >
-                  {link}
+                  {link.label}
                 </a>
                 {i < quickLinks.length - 1 && (
                   <span style={styles.quickDot}>•</span>

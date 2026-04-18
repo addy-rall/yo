@@ -7,6 +7,7 @@ import nadiaImg from '../assets/img3.png'
 import arjunImg from '../assets/img4.png'
 import image1 from '../assets/image1.png'
 import imagk from '../assets/imgk.png'
+import kyu from   '../assets/w.png';
 
 const speakers = [
   { name: 'Dr. Vijendra Chauhan', role: 'role', org: 'org', img: arjunImg, color: '#c0392b', accent: '#e74c3c', initials: 'VC', bio: 'bio' },
@@ -16,7 +17,7 @@ const speakers = [
   { name: 'Mr. Deepak Wadhwa', role: 'role', org: 'org', img: image1, color: '#784212', accent: '#e67e22', initials: 'S4', bio: 'bio' },
   
   { name: 'Mr. Kiran Kumar', role: 'role', org: 'org', img: imagk, color: '#974b8f', accent: '#9b549e', initials: 'S6', bio: 'bio' },
-  { name: 'Mr. Debojit Sen ', role: 'role', org: 'org', img: imagk, color: '#974b8f', accent: '#9b549e', initials: 'S6', bio: 'bio' }
+  { name: 'Mr. Debojit Sen ', role: 'role', org: 'org', img: kyu, color: '#974b8f', accent: '#9b549e', initials: 'S6', bio: 'bio' }
 ]
 
 export default function FeaturedSpeakers() {

@@ -1,37 +1,20 @@
 import { useState } from 'react'
 
+const HEADER_H  = 72    // clip more of the top header bar
+const IFRAME_H  = 900
+const CLIP_H    = 580   // tighter window = less footer chrome visible
+const ZOOM      = 1.30  // more zoom = white side bars pushed further off-card
+
 const reels = [
-  { shortcode: 'DXHPisPDdW5' },
-  { shortcode: 'DV_ohMfk-zQ' },
-  { shortcode: 'DV6OFBSiB88' },
-  { shortcode: 'DWMObwvE1AA' },
+  { shortcode: 'DXMgkqzk2Oz', path: 'reel' },
+  { shortcode: 'DV_ohMfk-zQ', path: 'reel' },
+  { shortcode: 'DV6OFBSiB88', path: 'reel' },
+  { shortcode: 'DWMObwvE1AA', path: 'reel' },
 ]
 
-/*
-  Instagram embed iframe vertical layout (approximate):
-    ┌──────────────────┐  ← y = 0
-    │  header bar      │  ~52px  (account name / avatar)
-    ├──────────────────┤  ← y = 52
-    │                  │
-    │   VIDEO          │  ~var (depends on card width × 16/9)
-    │                  │
-    ├──────────────────┤  ← y = 52 + videoH
-    │  footer actions  │  ~130px (likes, comment, "View more")
-    └──────────────────┘
-
-  We use:
-    - position:absolute  top: -52px  → header scrolled above the clip window
-    - clip window height: 400px      → footer falls below the clip boundary
-    - iframe total height: 620px     → gives enough room for the video
-*/
-
-const CLIP_H   = 400   // px — visible window (video only)
-const HEADER_H = 52    // px — header to scroll above window
-const IFRAME_H = 620   // px — full iframe height (header + video + footer)
-
 export default function PRHighlights() {
-  const [loaded,  setLoaded]  = useState({})
-  const [failed,  setFailed]  = useState({})
+  const [loaded, setLoaded] = useState({})
+  const [failed, setFailed] = useState({})
 
   return (
     <>
@@ -39,7 +22,7 @@ export default function PRHighlights() {
         .pr-section {
           padding: 5rem 2rem;
           text-align: center;
-          background: #0a0a0a;
+          background: #000;
         }
         .pr-eyebrow {
           font-size: 12px;
@@ -63,44 +46,55 @@ export default function PRHighlights() {
           margin: 0 0 4rem;
         }
 
-        /* ── Grid ── */
         .reel-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 16px;
-          max-width: 1100px;
+          gap: 20px;
+          max-width: 1400px;
           margin: 0 auto;
         }
 
-        /* ── Card shell ── */
         .reel-card {
           border-radius: 16px;
           overflow: hidden;
-          border: 1.5px solid #1e1e1e;
+          border: none;
           background: #000;
           transition: border-color 0.3s, transform 0.3s;
         }
         .reel-card:hover { border-color: #ff2b2b; transform: translateY(-4px); }
 
-        /* ── Clip window — key to hiding header + footer ── */
         .reel-clip {
           height: ${CLIP_H}px;
           overflow: hidden;
           position: relative;
+          background: #222;
+        }
+
+        /* black rectangle over the white Instagram footer */
+        .reel-clip::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 165px;
           background: #000;
+          pointer-events: none;
+          z-index: 3;
         }
 
         .reel-clip iframe {
           position: absolute;
-          top: -${HEADER_H}px;   /* shifts header above the clip boundary */
-          left: 0;
-          width: 100%;
-          height: ${IFRAME_H}px;
+          top: -${HEADER_H}px;
+          left: 50%;
+          width: ${Math.round(100 / ZOOM)}%;
+          height: ${Math.round(IFRAME_H)}px;
           border: none;
-          /* footer hangs below CLIP_H and is hidden by overflow:hidden */
+          transform: translateX(-50%) scale(${ZOOM});
+          transform-origin: top center;
+          z-index: 1;
         }
 
-        /* ── Shimmer ── */
         .shimmer {
           position: absolute;
           inset: 0;
@@ -123,7 +117,6 @@ export default function PRHighlights() {
         }
         .shimmer.done { opacity: 0; }
 
-        /* ── Fallback card for posts Instagram won't embed ── */
         .reel-fallback {
           display: flex;
           flex-direction: column;
@@ -140,7 +133,6 @@ export default function PRHighlights() {
         .reel-fallback svg   { opacity: 0.5; }
         .reel-fallback span  { font-size: 12px; color: #555; letter-spacing: 0.1em; text-transform: uppercase; }
 
-        /* ── CTA ── */
         .pr-cta { margin-top: 4rem; }
         .pr-link {
           font-size: 13px;
@@ -156,12 +148,15 @@ export default function PRHighlights() {
         }
         .pr-link:hover { background: #ff2b2b; border-color: #ff2b2b; }
 
-        /* ── Responsive ── */
         @media (max-width: 900px) {
           .reel-grid { grid-template-columns: repeat(2, 1fr); }
+          .reel-clip { height: 420px; }
+          .reel-fallback { height: 420px; }
         }
         @media (max-width: 500px) {
           .reel-grid { grid-template-columns: 1fr; }
+          .reel-clip { height: 500px; }
+          .reel-fallback { height: 500px; }
         }
       `}</style>
 
@@ -174,18 +169,18 @@ export default function PRHighlights() {
 
         <div className="reel-grid">
           {reels.map((r, i) => {
-            const url = `https://www.instagram.com/p/${r.shortcode}/`
+            const embedUrl = `https://www.instagram.com/${r.path}/${r.shortcode}/embed/`
+            const postUrl  = `https://www.instagram.com/${r.path}/${r.shortcode}/`
+
             return (
               <div className="reel-card" key={i}>
                 {failed[i] ? (
-                  /* Post blocked embedding — show a clean fallback link */
                   <a
                     className="reel-fallback"
-                    href={url}
+                    href={postUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {/* Instagram logo */}
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
                       <rect x="2" y="2" width="20" height="20" rx="5" ry="5"
@@ -199,7 +194,7 @@ export default function PRHighlights() {
                   <div className="reel-clip">
                     <div className={`shimmer${loaded[i] ? ' done' : ''}`} />
                     <iframe
-                      src={`https://www.instagram.com/p/${r.shortcode}/embed/`}
+                      src={embedUrl}
                       scrolling="no"
                       allowTransparency="true"
                       allowFullScreen={true}

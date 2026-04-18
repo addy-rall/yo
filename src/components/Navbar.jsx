@@ -9,14 +9,13 @@ const links = [
     isDropdown: true,
     subLinks: [
       { name: 'About TEDx', path: '/#this', isAnchor: true },
-      { name: 'About BBAU', path: 'https://www.bbau.ac.in', isExternal: true },
+      { name: 'About BBAU', path: '/#bbau', isAnchor: true },
       { name: 'About TEDxBBAU', path: '/#tedxbbau', isAnchor: true }
     ]
   },
   { name: 'Speakers', path: '/speakers', isRoute: true },
   { name: 'Sponsors', path: '/sponsors', isRoute: true },
   { name: 'Team', path: '/teamy', isRoute: true },
-  
   { name: 'Contact', path: '/contact', isRoute: true }
 ]
 
@@ -36,6 +35,17 @@ export default function Navbar() {
     const onResize = () => { if (window.innerWidth > 768) setMenuOpen(false) }
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
+  }, [])
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const onClickOutside = (e) => {
+      if (!e.target.closest('.dropdown-container')) {
+        setDropdownOpen(false)
+      }
+    }
+    document.addEventListener('click', onClickOutside)
+    return () => document.removeEventListener('click', onClickOutside)
   }, [])
 
   const handleRouteClick = (path) => {
@@ -90,13 +100,12 @@ export default function Navbar() {
                   <button 
                     className="nav-btn dropdown-trigger" 
                     onClick={(e) => {
-                      e.preventDefault();
-                      setDropdownOpen(!dropdownOpen);
+                      e.stopPropagation()
+                      setDropdownOpen(!dropdownOpen)
                     }}
                   >
                     {l.name} <span className={`arrow-down ${dropdownOpen ? 'rotated' : ''}`}>▾</span>
                   </button>
-                  {/* The 'show' class here must be handled in your CSS to display the menu on mobile */}
                   <ul className={`dropdown-menu ${dropdownOpen ? 'show' : ''}`}>
                     {l.subLinks.map(sub => (
                       <li key={sub.name}>

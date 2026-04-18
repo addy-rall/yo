@@ -6,9 +6,9 @@ import sponsor3 from '../assets/kang.png';
 
 const partners = {
   mainSponsor: [
-    { name: 'Sponsor One',   logo: sponsor1 },
-    { name: 'Sponsor Two',   logo: sponsor2 },
-    { name: 'Sponsor Three', logo: sponsor3 },
+    { name: 'Centurion Defence Academy',   logo: sponsor2 },
+    { name: 'The Fancave',   logo: sponsor1 },
+    { name: 'Kangaroo Trampoline Park ', logo: sponsor3 },
   ],
 };
 

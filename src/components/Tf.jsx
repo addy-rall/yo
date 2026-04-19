@@ -10,7 +10,7 @@ import who from '../assets/ho.png';
 const GUESTS = [
   {
     type: "Chief Guest",
-    name: "Prof. (Dr.) Raj Kumar Mittal",
+    name: "Prof. Raj Kumar Mittal",
     designation: "Vice Chancellor, BBAU, Lucknow",
     image: chiefImg 
   },

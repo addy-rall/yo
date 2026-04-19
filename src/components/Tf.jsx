@@ -27,13 +27,7 @@ const GUESTS = [
     designation: "Honorary Speaker",
     image: who
   },
-  {
-    type: "Guest of Honour",
-    name: "Dr. Sanjay Kumar Singh",
-    designation: "Honorary Speaker",
-    image: honorImg
-  },
-
+ 
   {
     type: "Guest of Honour",
     name: "Mr. Aditya Ranjan",

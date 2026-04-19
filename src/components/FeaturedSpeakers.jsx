@@ -13,11 +13,11 @@ const speakers = [
   { name: 'Dr. Vijendra Chauhan', role: 'Interviewer | Mentor', img: arjunImg, color: '#c0392b', accent: '#e74c3c', initials: 'VC', bio: 'Dr. Vijender Singh Chauhan, widely known as Masijeevi, is a highly respected academician, mentor, and one of the most influential interview experts for civil services aspirants in India. He serves as an Associate Professor at the University of Delhi and has guided thousands of students in shaping not just their careers, but their personalities and thought processes. With experience as an interviewer at multiple prestigious platforms including 12+ TEDx talks and Josh Talks, he is known for his deep understanding of human behavior, communication, and real-world intelligence.', instagram: 'https://www.instagram.com/masijeevi/' },
   { name: 'Dr. Gajendra Purohit', role: 'Educator | Mentor', img: nadiaImg, color: '#6c3483', accent: '#9b59b6', initials: 'GP', bio: 'Gajendra Purohit (MSc, NET, PhD), known as GP Sir, has 20+ years of math teaching experience. He is a full-time YouTuber and is known for his engaging and insightful teaching methods. He founded MathsCare for online courses and GPS Publication House, with six bestselling books. Additionally, he is a motivational speaker and career guide.', instagram: 'https://www.instagram.com/dr.gajendrapurohit' },
   { name: 'Dr. Yogeshwar Nath Mishra', role: 'Ex NASA Scientist', img: rahulImg, color: '#0e6655', accent: '#1abc9c', initials: 'YM', bio: "Dr. Yogeshwar Nath Mishra is a former NASA scientist, Professor at IIT Jodhpur, and entrepreneur whose journey spans from a remote village in Uttar Pradesh to the forefront of global scientific innovation. He has co-developed the world's fastest laser sheet imaging technology and one of the fastest wide-field microscopy techniques.", instagram: 'https://www.instagram.com/yogeshwar.space/' },
-  { name: 'Mr. Aditya Ranjan', role: 'Educator | Mentor', img: priyaImg, color: '#6f8c50', accent: '#729048', initials: 'AR', bio: "Aditya Ranjan Sir is one of India’s most influential mathematics educators and a powerful youth motivator, known for transforming the way students approach competitive exams. He secured an All India Rank 114 in CHSL and cleared multiple prestigious exams like CHSL, CPO, and CDS, eventually serving as an Excise Inspector through SSC CGL 2019. From a humble background to becoming a nationally recognized educator, his journey reflects discipline, resilience, and consistency. Today, through platforms like YouTube and initiatives such as Vidyagram, he has guided lakhs of aspirants preparing for SSC, रेलवे, और अन्य competitive exams. What truly sets him apart is his concept-driven teaching style, where he simplifies complex mathematical problems into easy, logical approaches—making him especially popular among beginners and non-maths background students. Beyond academics, he is widely admired for his motivational mindset, clarity of thought, and real-life guidance, inspiring students not just to crack exams but to build discipline and confidence in life.", instagram: 'https://www.instagram.com/aditya___ranjan/' },
+  { name: 'Mr. Aditya Ranjan', role: 'Educator | Mentor', img: priyaImg, color: '#6f8c50', accent: '#729048', initials: 'AR', bio: "Aditya Ranjan Sir is one of India's most influential mathematics educators and a powerful youth motivator, known for transforming the way students approach competitive exams. He secured an All India Rank 114 in CHSL and cleared multiple prestigious exams like CHSL, CPO, and CDS, eventually serving as an Excise Inspector through SSC CGL 2019. From a humble background to becoming a nationally recognized educator, his journey reflects discipline, resilience, and consistency. Today, through platforms like YouTube and initiatives such as Vidyagram, he has guided lakhs of aspirants.", instagram: 'https://www.instagram.com/aditya___ranjan/' },
   { name: 'Mr. Deepak Wadhwa', role: 'Trader | Mentor', img: image1, color: '#784212', accent: '#e67e22', initials: 'DW', bio: 'Deepak Wadhwa is a trader, investor, and financial educator who simplifies financial markets for everyday investors. With experience in equities, derivatives, and crypto, he focuses on disciplined trading, risk management, and market psychology, helping thousands make smarter financial decisions.', instagram: 'https://www.instagram.com/thedeeptalks.official/' },
-  { name: 'Mr. Kiran Kumar', role: 'Edupreneur |  Author', img: imagk, color: '#974b8f', accent: '#9b549e', initials: 'KK', bio: 'With over 19 years of experience in academic leadership, competitive exam training, and student psychology, Kiran Sidde is an Edupreneur committed to transforming education through scientifically grounded, emotionally aware, and purpose-driven frameworks. He has impacted over 15,000+ students, engaged with 70+ institutions, and conducted 200+ workshops.', instagram: 'https://www.instagram.com/kiran_sidde/' },
+  { name: 'Mr. Kiran Kumar', role: 'Edupreneur | Author', img: imagk, color: '#974b8f', accent: '#9b549e', initials: 'KK', bio: 'With over 19 years of experience in academic leadership, competitive exam training, and student psychology, Kiran Sidde is an Edupreneur committed to transforming education through scientifically grounded, emotionally aware, and purpose-driven frameworks. He has impacted over 15,000+ students, engaged with 70+ institutions, and conducted 200+ workshops.', instagram: 'https://www.instagram.com/kiran_sidde/' },
   { name: 'Mr. Debojit Sen', role: 'Founder & CEO, Crack-ED', img: kyu, color: '#1a5276', accent: '#2e86c1', initials: 'DS', bio: "Debojit Sen is the Founder & CEO of Crack-ED, building job-ready education at scale. A first-generation entrepreneur backed by CarDekho Group, he is bridging India's employability gap through outcome-driven programs, strong corporate partnerships, and a fast-scaling, profitable model shaping future-ready careers.", instagram: null },
-   { name: 'Ms. Annapoorna Kumaar ', role: 'Animal telepathic Communicator', img: kyu2, color: '#1a5276', accent: '#1c5276', initials: 'AK', bio: "Annapoorna Kumaar is an internationally recognized animal communicator who has worked with over 5,000 pet parents, helping them build deeper understanding and connection with their animals. Her work focuses on decoding animal behavior through intuitive communication, offering insights into emotional, behavioral, and relational dynamics between pets and their humans. Through her sessions, workshops, and talks, she brings a unique perspective that animals are not just companions, but conscious beings who influence, reflect, and contribute meaningfully to human lives.", instagram: null },
+  { name: 'Ms. Annapoorna Kumaar', role: 'Animal Telepathic Communicator', img: kyu2, color: '#1a5276', accent: '#1c5276', initials: 'AK', bio: "Annapoorna Kumaar is an internationally recognized animal communicator who has worked with over 5,000 pet parents, helping them build deeper understanding and connection with their animals. Her work focuses on decoding animal behavior through intuitive communication, offering insights into emotional, behavioral, and relational dynamics between pets and their humans.", instagram: null },
 ]
 
 const InstagramIcon = () => (
@@ -30,8 +30,11 @@ export default function FeaturedSpeakers() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
   const [flippedCards, setFlippedCards] = useState({})
+
   const touchStart = useRef(null)
   const touchEnd = useRef(null)
+  const touchStartY = useRef(null)
+  const isSwiping = useRef(false)
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768)
@@ -46,14 +49,29 @@ export default function FeaturedSpeakers() {
   const handleNext = () => { setFlippedCards({}); setCurrentIndex(p => (p + 1) % total) }
   const handlePrev = () => { setFlippedCards({}); setCurrentIndex(p => (p - 1 + total) % total) }
 
-  const onTouchStart = e => { touchStart.current = e.targetTouches[0].clientX }
-  const onTouchMove  = e => { touchEnd.current   = e.targetTouches[0].clientX }
-  const onTouchEnd   = () => {
+  const onStageTouchStart = e => {
+    if (flippedCards[currentIndex]) return
+    touchStart.current = e.targetTouches[0].clientX
+    touchStartY.current = e.targetTouches[0].clientY
+    touchEnd.current = null
+    isSwiping.current = false
+  }
+  const onStageTouchMove = e => {
+    if (flippedCards[currentIndex]) return
+    touchEnd.current = e.targetTouches[0].clientX
+    const dy = Math.abs(e.targetTouches[0].clientY - touchStartY.current)
+    const dx = Math.abs(touchEnd.current - touchStart.current)
+    if (dx > dy && dx > 10) isSwiping.current = true
+  }
+  const onStageTouchEnd = () => {
+    if (flippedCards[currentIndex]) return
     if (!touchStart.current || !touchEnd.current) return
     const d = touchStart.current - touchEnd.current
-    if (d > 50) handleNext()
-    if (d < -50) handlePrev()
-    touchStart.current = null; touchEnd.current = null
+    if (isSwiping.current) {
+      if (d > 40) handleNext()
+      if (d < -40) handlePrev()
+    }
+    touchStart.current = null; touchEnd.current = null; isSwiping.current = false
   }
 
   const toggleFlip = i => setFlippedCards(p => ({ ...p, [i]: !p[i] }))
@@ -65,32 +83,65 @@ export default function FeaturedSpeakers() {
         return { ...speakers[idx], gi: idx }
       })
 
-  /* ── shared measurements ── */
   const CARD_W = isMobile ? 290 : 280
-  const CARD_H = isMobile ? 440 : 420
-  const PHOTO_H = isMobile ? 300 : 320
+  const CARD_H = isMobile ? 460 : 420
+  const PHOTO_H = isMobile ? 310 : 320
 
   return (
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
-        .sp-flip-inner { transition: transform 0.8s cubic-bezier(0.4,0,0.2,1); transform-style: preserve-3d; }
-        .sp-card-wrap:hover .sp-flip-inner { transform: rotateY(180deg); }
+        .sp-flip-inner {
+          transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
+          transform-style: preserve-3d;
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
         .sp-card-wrap.flipped .sp-flip-inner { transform: rotateY(180deg); }
+        @media (min-width: 769px) {
+          .sp-card-wrap:hover .sp-flip-inner { transform: rotateY(180deg); }
+          .sp-card-wrap:hover .sp-img-el { filter: grayscale(0%) !important; transform: scale(1.05); }
+        }
+        .sp-card-wrap.flipped .sp-img-el { filter: grayscale(0%) !important; transform: scale(1.05); }
         .sp-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
         .sp-back-face { transform: rotateY(180deg); }
-        .sp-card-wrap:hover .sp-img-el,
-        .sp-card-wrap.flipped .sp-img-el { filter: grayscale(0%) !important; transform: scale(1.05); }
         .sp-bio-scroll::-webkit-scrollbar { width: 4px; }
         .sp-bio-scroll::-webkit-scrollbar-track { background: transparent; }
         .sp-bio-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
         .sp-nav-btn:hover { background: #d82020 !important; border-color: #d82020 !important; }
-        .sp-dot-item { width:8px; height:8px; border-radius:50%; background:#333; cursor:pointer; transition:background 0.3s, transform 0.3s; display:block; }
+        .sp-dot-item { width:8px; height:8px; border-radius:50%; background:#333; cursor:pointer; transition:background 0.3s, transform 0.3s; display:block; flex-shrink:0; }
         .sp-dot-item.active { background:#d82020; transform:scale(1.3); }
         .sp-insta:hover { background: rgba(255,255,255,0.22) !important; }
-        @media (max-width: 768px) {
-          .sp-card-wrap:hover .sp-flip-inner { transform: none; }
+        .sp-flip-hint {
+          position: absolute;
+          bottom: 10px; left: 0; right: 0;
+          text-align: center;
+          font-size: 0.55rem;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: rgba(255,255,255,0.35);
+          pointer-events: none;
+          font-family: 'Poppins', sans-serif;
+          z-index: 2;
         }
+        .sp-close-btn {
+          position: absolute;
+          top: 10px; right: 10px;
+          width: 28px; height: 28px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.15);
+          border: 1px solid rgba(255,255,255,0.25);
+          color: #fff;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 0.75rem;
+          cursor: pointer;
+          z-index: 10;
+          transition: background 0.2s;
+          font-family: 'Poppins', sans-serif;
+          flex-shrink: 0;
+        }
+        .sp-close-btn:hover { background: rgba(255,255,255,0.3); }
       `}</style>
 
       <section style={{
@@ -123,7 +174,7 @@ export default function FeaturedSpeakers() {
               letterSpacing: '3px', textTransform: 'uppercase',
               marginTop: '14px', fontWeight: 600,
               fontFamily: "'Poppins', sans-serif",
-            }}>✦ Click a card to read more ✦</p>
+            }}>✦ {isMobile ? 'Tap a card to read more' : 'Click a card to read more'} ✦</p>
           </div>
 
           {/* LAYOUT */}
@@ -135,207 +186,207 @@ export default function FeaturedSpeakers() {
             gap: isMobile ? 0 : '30px',
           }}>
 
-            {/* PREV ARROW */}
+            {/* PREV ARROW — desktop only */}
             {!isMobile && (
-              <button
-                className="sp-nav-btn"
-                onClick={handlePrev}
-                style={{
-                  width: 50, height: 50, borderRadius: '50%',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  background: 'rgba(255,255,255,0.05)',
-                  color: '#fff', cursor: 'pointer',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '1.2rem', flexShrink: 0, padding: 0,
-                  transition: 'background 0.3s, border-color 0.3s',
-                  fontFamily: 'inherit',
-                }}
-              >←</button>
+              <button className="sp-nav-btn" onClick={handlePrev} style={{
+                width: 50, height: 50, borderRadius: '50%',
+                border: '1px solid rgba(255,255,255,0.2)',
+                background: 'rgba(255,255,255,0.05)',
+                color: '#fff', cursor: 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: '1.2rem', flexShrink: 0, padding: 0,
+                transition: 'background 0.3s, border-color 0.3s',
+                fontFamily: 'inherit',
+              }}>←</button>
             )}
 
             {/* STAGE */}
             <div
               style={{ display: 'flex', gap: 20, alignItems: 'center', justifyContent: 'center' }}
-              onTouchStart={onTouchStart}
-              onTouchMove={onTouchMove}
-              onTouchEnd={onTouchEnd}
+              onTouchStart={onStageTouchStart}
+              onTouchMove={onStageTouchMove}
+              onTouchEnd={onStageTouchEnd}
             >
-              {visible.map(s => (
-                <div
-                  key={s.gi}
-                  className={`sp-card-wrap${flippedCards[s.gi] ? ' flipped' : ''}`}
-                  onClick={() => toggleFlip(s.gi)}
-                  style={{
-                    width: CARD_W, height: CARD_H,
-                    perspective: 1200, cursor: 'pointer',
-                    flexShrink: 0, position: 'relative',
-                  }}
-                >
-                  {/* FLIP CONTAINER */}
+              {visible.map(s => {
+                const isFlipped = !!flippedCards[s.gi]
+                return (
+                  /* ── OUTER WRAPPER: gets sp-card-wrap + flipped class + onClick ── */
                   <div
-                    className="sp-flip-inner"
-                    style={{ position: 'relative', width: '100%', height: '100%' }}
+                    key={s.gi}
+                    className={`sp-card-wrap${isFlipped ? ' flipped' : ''}`}
+                    onClick={() => toggleFlip(s.gi)}
+                    style={{
+                      width: CARD_W, height: CARD_H,
+                      perspective: 1200, cursor: 'pointer',
+                      flexShrink: 0, position: 'relative',
+                    }}
                   >
+                    {/* ── INNER: only sp-flip-inner, no sp-card-wrap ── */}
+                    <div className="sp-flip-inner">
 
-                    {/* ── FRONT ── */}
-                    <div
-                      className="sp-face"
-                      style={{
-                        position: 'absolute', inset: 0,
-                        borderRadius: 8, overflow: 'hidden',
-                        border: '1px solid rgba(255,255,255,0.1)',
-                        background: '#161616',
-                        display: 'flex', flexDirection: 'column',
-                      }}
-                    >
-                      {/* Photo */}
-                      <div style={{
-                        position: 'relative',
-                        height: PHOTO_H,
-                        background: '#111',
-                        overflow: 'hidden',
-                        flexShrink: 0,
-                      }}>
-                        <img
-                          src={s.img}
-                          alt={s.name}
-                          className="sp-img-el"
-                          style={{
-                            position: 'absolute', top: 0, left: 0,
-                            width: '100%', height: '100%',
-                            objectFit: 'cover', objectPosition: 'top center',
-                            filter: 'grayscale(100%)',
-                            transition: 'filter 0.6s ease, transform 0.6s ease',
-                            display: 'block', maxWidth: 'none',
-                          }}
-                        />
-                        <span style={{
-                          position: 'absolute', top: '50%', left: '50%',
-                          transform: 'translate(-50%,-50%)',
-                          fontSize: '6rem', fontWeight: 900,
-                          color: s.color, opacity: 0.15,
-                          pointerEvents: 'none', userSelect: 'none',
-                          fontFamily: "'Poppins', sans-serif",
-                        }}>{s.initials}</span>
-                      </div>
-
-                      {/* Nameplate */}
-                      <div style={{ background: '#1c1c1c', flexShrink: 0 }}>
-                        <div style={{ padding: '12px 15px' }}>
-                          <strong style={{
-                            display: 'block', fontSize: '0.95rem',
-                            marginBottom: 3, color: '#fff', fontWeight: 700,
-                            fontFamily: "'Poppins', sans-serif",
-                          }}>{s.name}</strong>
-                          <em style={{
-                            fontSize: '0.68rem', color: '#888',
-                            textTransform: 'uppercase', fontStyle: 'normal',
-                            letterSpacing: '0.5px',
-                            fontFamily: "'Poppins', sans-serif",
-                          }}>{s.role}</em>
-                        </div>
-                        <div style={{
-                          height: 4,
-                          background: `linear-gradient(90deg, ${s.color}, ${s.accent})`,
-                        }} />
-                      </div>
-                    </div>
-
-                    {/* ── BACK ── */}
-                    <div
-                      className="sp-face sp-back-face"
-                      style={{
-                        position: 'absolute', inset: 0,
-                        borderRadius: 8, overflow: 'hidden',
-                        border: '1px solid rgba(255,255,255,0.1)',
-                        background: `linear-gradient(145deg, ${s.color}dd, #0a0a0a)`,
-                        display: 'flex', flexDirection: 'column',
-                        padding: 0,
-                      }}
-                    >
+                      {/* ── FRONT ── */}
                       <div
-                        className="sp-bio-scroll"
-                        onTouchStart={e => e.stopPropagation()}
-                        onTouchMove={e => e.stopPropagation()}
-                        onTouchEnd={e => e.stopPropagation()}
+                        className="sp-face"
                         style={{
-                          flex: 1, overflowY: 'auto', overflowX: 'hidden',
-                          padding: '22px',
+                          position: 'absolute', inset: 0,
+                          borderRadius: 8, overflow: 'hidden',
+                          border: '1px solid rgba(255,255,255,0.1)',
+                          background: '#161616',
                           display: 'flex', flexDirection: 'column',
-                          minHeight: 0,
-                          scrollbarWidth: 'thin',
-                          scrollbarColor: 'rgba(255,255,255,0.25) transparent',
                         }}
                       >
-                        <h3 style={{
-                          fontSize: '1.1rem', fontWeight: 800,
-                          margin: '0 0 4px', lineHeight: 1.2, color: '#fff',
-                          fontFamily: "'Poppins', sans-serif",
-                        }}>{s.name}</h3>
-                        <p style={{
-                          fontSize: '0.68rem', opacity: 0.75,
-                          textTransform: 'uppercase', letterSpacing: '1px',
-                          margin: '0 0 12px', color: '#fff',
-                          fontFamily: "'Poppins', sans-serif",
-                        }}>{s.role}</p>
                         <div style={{
-                          width: 36, height: 3, background: '#fff',
-                          borderRadius: 2, marginBottom: 12, flexShrink: 0,
-                        }} />
-                        <p style={{
-                          fontSize: '0.8rem', lineHeight: 1.65,
-                          color: '#eee', margin: '0 0 16px',
-                          fontFamily: "'Poppins', sans-serif",
-                        }}>{s.bio}</p>
-
-                        {s.instagram && (
-                          
-                            <a
-                            href={s.instagram}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={e => e.stopPropagation()}
-                            className="sp-insta"
+                          position: 'relative',
+                          height: PHOTO_H,
+                          background: '#111',
+                          overflow: 'hidden',
+                          flexShrink: 0,
+                        }}>
+                          <img
+                            src={s.img}
+                            alt={s.name}
+                            className="sp-img-el"
                             style={{
-                              display: 'inline-flex', alignItems: 'center', gap: 8,
-                              marginTop: 'auto', padding: '8px 14px',
-                              borderRadius: 6,
-                              background: 'rgba(255,255,255,0.1)',
-                              border: '1px solid rgba(255,255,255,0.2)',
-                              color: '#fff', textDecoration: 'none',
-                              fontSize: '0.72rem', fontWeight: 600,
-                              letterSpacing: '0.5px', alignSelf: 'flex-start',
-                              flexShrink: 0, transition: 'background 0.2s',
-                              fontFamily: "'Poppins', sans-serif",
+                              position: 'absolute', top: 0, left: 0,
+                              width: '100%', height: '100%',
+                              objectFit: 'cover', objectPosition: 'top center',
+                              filter: 'grayscale(100%)',
+                              transition: 'filter 0.6s ease, transform 0.6s ease',
+                              display: 'block', maxWidth: 'none',
                             }}
-                          >
-                            <InstagramIcon /> Follow on Instagram
-                          </a>
+                          />
+                          <span style={{
+                            position: 'absolute', top: '50%', left: '50%',
+                            transform: 'translate(-50%,-50%)',
+                            fontSize: '6rem', fontWeight: 900,
+                            color: s.color, opacity: 0.15,
+                            pointerEvents: 'none', userSelect: 'none',
+                            fontFamily: "'Poppins', sans-serif",
+                          }}>{s.initials}</span>
+                        </div>
+
+                        <div style={{ background: '#1c1c1c', flexShrink: 0 }}>
+                          <div style={{ padding: '12px 15px' }}>
+                            <strong style={{
+                              display: 'block', fontSize: '0.95rem',
+                              marginBottom: 3, color: '#fff', fontWeight: 700,
+                              fontFamily: "'Poppins', sans-serif",
+                            }}>{s.name}</strong>
+                            <em style={{
+                              fontSize: '0.68rem', color: '#888',
+                              textTransform: 'uppercase', fontStyle: 'normal',
+                              letterSpacing: '0.5px',
+                              fontFamily: "'Poppins', sans-serif",
+                            }}>{s.role}</em>
+                          </div>
+                          <div style={{ height: 4, background: `linear-gradient(90deg, ${s.color}, ${s.accent})` }} />
+                        </div>
+
+                        {isMobile && (
+                          <div className="sp-flip-hint">tap to read bio ↑</div>
                         )}
                       </div>
-                    </div>
 
+                      {/* ── BACK ── */}
+                      <div
+                        className="sp-face sp-back-face"
+                        style={{
+                          position: 'absolute', inset: 0,
+                          borderRadius: 8, overflow: 'hidden',
+                          border: '1px solid rgba(255,255,255,0.1)',
+                          background: `linear-gradient(145deg, ${s.color}dd, #0a0a0a)`,
+                          display: 'flex', flexDirection: 'column',
+                          padding: 0,
+                        }}
+                      >
+                        <button
+                          className="sp-close-btn"
+                          onClick={e => { e.stopPropagation(); toggleFlip(s.gi) }}
+                        >✕</button>
+
+                        <div
+                          className="sp-bio-scroll"
+                          onTouchStart={e => e.stopPropagation()}
+                          onTouchMove={e => e.stopPropagation()}
+                          onTouchEnd={e => e.stopPropagation()}
+                          onClick={e => e.stopPropagation()}
+                          style={{
+                            flex: 1, overflowY: 'auto', overflowX: 'hidden',
+                            padding: '22px',
+                            paddingTop: '36px',
+                            display: 'flex', flexDirection: 'column',
+                            minHeight: 0,
+                            scrollbarWidth: 'thin',
+                            scrollbarColor: 'rgba(255,255,255,0.25) transparent',
+                            WebkitOverflowScrolling: 'touch',
+                          }}
+                        >
+                          <h3 style={{
+                            fontSize: '1.1rem', fontWeight: 800,
+                            margin: '0 0 4px', lineHeight: 1.2, color: '#fff',
+                            fontFamily: "'Poppins', sans-serif",
+                          }}>{s.name}</h3>
+                          <p style={{
+                            fontSize: '0.68rem', opacity: 0.75,
+                            textTransform: 'uppercase', letterSpacing: '1px',
+                            margin: '0 0 12px', color: '#fff',
+                            fontFamily: "'Poppins', sans-serif",
+                          }}>{s.role}</p>
+                          <div style={{
+                            width: 36, height: 3, background: '#fff',
+                            borderRadius: 2, marginBottom: 12, flexShrink: 0,
+                          }} />
+                          <p style={{
+                            fontSize: '0.8rem', lineHeight: 1.65,
+                            color: '#eee', margin: '0 0 16px',
+                            fontFamily: "'Poppins', sans-serif",
+                          }}>{s.bio}</p>
+
+                          {s.instagram && (
+                            
+                             <a
+                              href={s.instagram}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={e => e.stopPropagation()}
+                              className="sp-insta"
+                              style={{
+                                display: 'inline-flex', alignItems: 'center', gap: 8,
+                                marginTop: 'auto', padding: '8px 14px',
+                                borderRadius: 6,
+                                background: 'rgba(255,255,255,0.1)',
+                                border: '1px solid rgba(255,255,255,0.2)',
+                                color: '#fff', textDecoration: 'none',
+                                fontSize: '0.72rem', fontWeight: 600,
+                                letterSpacing: '0.5px', alignSelf: 'flex-start',
+                                flexShrink: 0, transition: 'background 0.2s',
+                                fontFamily: "'Poppins', sans-serif",
+                              }}
+                            >
+                              <InstagramIcon /> Follow on Instagram
+                            </a>
+                          )}
+                        </div>
+                      </div>
+
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
 
-            {/* NEXT ARROW */}
+            {/* NEXT ARROW — desktop only */}
             {!isMobile && (
-              <button
-                className="sp-nav-btn"
-                onClick={handleNext}
-                style={{
-                  width: 50, height: 50, borderRadius: '50%',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  background: 'rgba(255,255,255,0.05)',
-                  color: '#fff', cursor: 'pointer',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '1.2rem', flexShrink: 0, padding: 0,
-                  transition: 'background 0.3s, border-color 0.3s',
-                  fontFamily: 'inherit',
-                }}
-              >→</button>
+              <button className="sp-nav-btn" onClick={handleNext} style={{
+                width: 50, height: 50, borderRadius: '50%',
+                border: '1px solid rgba(255,255,255,0.2)',
+                background: 'rgba(255,255,255,0.05)',
+                color: '#fff', cursor: 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: '1.2rem', flexShrink: 0, padding: 0,
+                transition: 'background 0.3s, border-color 0.3s',
+                fontFamily: 'inherit',
+              }}>→</button>
             )}
           </div>
 
@@ -345,43 +396,37 @@ export default function FeaturedSpeakers() {
               display: 'flex', alignItems: 'center',
               justifyContent: 'center', gap: 20, marginTop: 28,
             }}>
-              <button
-                className="sp-nav-btn"
-                onClick={handlePrev}
-                style={{
-                  width: 40, height: 40, borderRadius: '50%',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  background: 'rgba(255,255,255,0.05)',
-                  color: '#fff', cursor: 'pointer',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '1rem', padding: 0,
-                  transition: 'background 0.3s, border-color 0.3s',
-                  fontFamily: 'inherit',
-                }}
-              >←</button>
+              <button className="sp-nav-btn" onClick={handlePrev} style={{
+                width: 40, height: 40, borderRadius: '50%',
+                border: '1px solid rgba(255,255,255,0.2)',
+                background: 'rgba(255,255,255,0.05)',
+                color: '#fff', cursor: 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: '1rem', padding: 0,
+                transition: 'background 0.3s, border-color 0.3s',
+                fontFamily: 'inherit',
+              }}>←</button>
+
               <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                 {speakers.map((_, i) => (
                   <span
                     key={i}
                     className={`sp-dot-item${currentIndex === i ? ' active' : ''}`}
-                    onClick={() => setCurrentIndex(i)}
+                    onClick={() => { setFlippedCards({}); setCurrentIndex(i) }}
                   />
                 ))}
               </div>
-              <button
-                className="sp-nav-btn"
-                onClick={handleNext}
-                style={{
-                  width: 40, height: 40, borderRadius: '50%',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  background: 'rgba(255,255,255,0.05)',
-                  color: '#fff', cursor: 'pointer',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '1rem', padding: 0,
-                  transition: 'background 0.3s, border-color 0.3s',
-                  fontFamily: 'inherit',
-                }}
-              >→</button>
+
+              <button className="sp-nav-btn" onClick={handleNext} style={{
+                width: 40, height: 40, borderRadius: '50%',
+                border: '1px solid rgba(255,255,255,0.2)',
+                background: 'rgba(255,255,255,0.05)',
+                color: '#fff', cursor: 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: '1rem', padding: 0,
+                transition: 'background 0.3s, border-color 0.3s',
+                fontFamily: 'inherit',
+              }}>→</button>
             </div>
           )}
 

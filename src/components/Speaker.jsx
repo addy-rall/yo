@@ -7,7 +7,7 @@ import arjunImg from '../assets/img4.png';
 import image1 from '../assets/image1.png';
 import imagk from '../assets/imgk.png';
 import kyu from '../assets/w.png';
-import kyu2 from '../assets/imggina.png';
+import kyu2 from '../assets/imgg.png';
 
 const speakers = [
   { id: '01', name: 'Dr. Vijendra Chauhan', role: 'Interviewer | Mentor',  img: arjunImg, bio: 'Dr. Vijender Singh Chauhan, widely known as Masijeevi, is a highly respected academician, mentor, and one of India’s most influential interview experts for civil services aspirants. He serves as an Associate Professor at the University of Delhi and has guided thousands of students in shaping not just their careers, but their personalities and thought processes. With experience as an interviewer at multiple prestigious platforms including 12+ TEDx talks and Josh Talks, he is known for his deep understanding of human behavior, communication, and real-world intelligence. His insights go beyond academics—focusing on clarity of thought, ethical grounding, and confidence building, which are crucial for success in life and competitive exams. Through his digital presence and mentorship, he has built a strong connection with millions of students across India. His unique approach blends intellectual depth with practical wisdom, making him a powerful voice for today’s youth', color: '#e62b1e', instagram: 'https://www.instagram.com/masijeevi/' },

@@ -128,7 +128,7 @@ const Register = () => {
     },
     {
       title: "Double Pass (2 Tickets)",
-      price: "₹299",
+      price: "₹249",
       original: "₹349",
       perks: ["Full Day Access", "Access to All Talks", "Certificate Included"],
       url: "https://in.bookmyshow.com/events/tedxbbau/ET00494884",

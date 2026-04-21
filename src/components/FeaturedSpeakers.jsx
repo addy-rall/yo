@@ -8,6 +8,7 @@ import image1 from '../assets/image1.png'
 import imagk from '../assets/imgk.png'
 import kyu from '../assets/w.png'
 import kyu2 from '../assets/imgg.png'
+import image3 from '../assets/imgsi.png'
 
 const speakers = [
   { name: 'Dr. Vijendra Chauhan', role: 'Interviewer | Mentor', img: arjunImg, color: '#c0392b', accent: '#e74c3c', initials: 'VC', bio: 'Dr. Vijender Singh Chauhan, widely known as Masijeevi, is a highly respected academician, mentor, and one of the most influential interview experts for civil services aspirants in India. He serves as an Associate Professor at the University of Delhi and has guided thousands of students in shaping not just their careers, but their personalities and thought processes. With experience as an interviewer at multiple prestigious platforms including 12+ TEDx talks and Josh Talks, he is known for his deep understanding of human behavior, communication, and real-world intelligence.', instagram: 'https://www.instagram.com/masijeevi/' },
@@ -18,7 +19,7 @@ const speakers = [
   { name: 'Mr. Deepak Wadhwa', role: 'Trader | Mentor', img: image1, color: '#784212', accent: '#e67e22', initials: 'DW', bio: 'Deepak Wadhwa is a trader, investor, and financial educator who simplifies financial markets for everyday investors. With experience in equities, derivatives, and crypto, he focuses on disciplined trading, risk management, and market psychology, helping thousands make smarter financial decisions.', instagram: 'https://www.instagram.com/thedeeptalks.official/' },
   { name: 'Mr. Kiran Kumar', role: 'Edupreneur | Author', img: imagk, color: '#974b8f', accent: '#9b549e', initials: 'KK', bio: 'With over 19 years of experience in academic leadership, competitive exam training, and student psychology, Kiran Sidde is an Edupreneur committed to transforming education through scientifically grounded, emotionally aware, and purpose-driven frameworks. He has impacted over 15,000+ students, engaged with 70+ institutions, and conducted 200+ workshops.', instagram: 'https://www.instagram.com/kiran_sidde/' },
   { name: 'Mr. Debojit Sen', role: 'Founder & CEO, Crack-ED', img: kyu, color: '#1a5276', accent: '#2e86c1', initials: 'DS', bio: "Debojit Sen is the Founder & CEO of Crack-ED, building job-ready education at scale. A first-generation entrepreneur backed by CarDekho Group, he is bridging India's employability gap through outcome-driven programs, strong corporate partnerships, and a fast-scaling, profitable model shaping future-ready careers.", instagram: null },
-  
+  { name: 'Mr. Sandeep Israni', role: 'Ex Agency Owner | Passionate Educator', img: image3, color: '#cf5096', accent: '#d22b4f', initials: 'SI', bio: "Sandeep Israni is Director & Partner at Varma Corp with 20+ years of experience in real estate sales, marketing, and customer strategy. An Economic Times Power of Ideas Awardee and TEDx speaker, he also serves as Adjunct Faculty at leading institutes including SCMHRD, Goa Institute of Management, and IIM Sambhalpur.", instagram: 'https://www.instagram.com/sandeep.israni.re?igsh=cDl1NTR4ODBubnpz&utm_source=qr' },
 ]
 
 const InstagramIcon = () => (

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 
 const STATS = [
-  { num:'6+',   label:'Inspiring Speakers' },
-  { num:'500+', label:'Attendees Expected' },
+  { num:'15+',   label:'Inspiring Speakers' },
+  { num:'1000+', label:'Attendees Expected' },
   { num:'1',    label:'Powerful Theme' },
   { num:'∞',    label:'Ideas to Take Home' },
 ]

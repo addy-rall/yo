@@ -1,0 +1,8 @@
+.pr-highlights-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.pr-highlights-scroll::-webkit-scrollbar {
+  display: none;
+}

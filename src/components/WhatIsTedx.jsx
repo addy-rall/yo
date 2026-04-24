@@ -258,7 +258,7 @@ const sections = [
     ],
     pills: ['Innovation', 'Community'],
     visual: 'tedxbbau',
-    websiteBtn: null,
+    websiteBtn: { label: 'See More', href: 'https://www.ted.com/tedx/events/68362' },
   },
 ]
 

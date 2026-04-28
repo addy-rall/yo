@@ -4,10 +4,14 @@ import sponsor1 from '../assets/stall1.PNG';
 import sponsor2 from '../assets/cent.png';
 import sponsor3 from '../assets/kanga.jpeg';
 import sponsor4 from '../assets/crac.jpeg';
+// 1. Import the new logo
+import sponsorTS from '../assets/ts.jpg'; 
 
 const partners = {
   mainSponsor: [
     { name: 'Centurion Defence Academy', logo: sponsor2 },
+    // 2. Inserted between Centurion and CRACK-ED
+    { name: 'TS Logo', logo: sponsorTS }, 
     { name: 'CRACK-ED', logo: sponsor4 },
   ],
   stallPartners: [
@@ -156,7 +160,7 @@ export default function Partners() {
         <span style={styles.redText}>Our</span>Partners
       </h2>
 
-      {/* Sponsors - EDITED TO STACK VERTICALLY */}
+      {/* Sponsors - Stacked vertically */}
       <h3 style={styles.categoryTitle}>Sponsors</h3>
       <div style={{ ...styles.sponsorCardsRow, flexDirection: 'column' }}>
         {partners.mainSponsor.map((partner, idx) =>
@@ -164,7 +168,7 @@ export default function Partners() {
         )}
       </div>
 
-      {/* Stall Partners - REMAINS HORIZONTAL ON DESKTOP */}
+      {/* Stall Partners */}
       <div style={styles.sectionGap}>
         <h3 style={styles.categoryTitle}>Stall Partners</h3>
         <div style={styles.sponsorCardsRow}>

@@ -11,7 +11,7 @@ const partners = {
   mainSponsor: [
     { name: 'Centurion Defence Academy', logo: sponsor2 },
     // 2. Inserted between Centurion and CRACK-ED
-    { name: 'TS Logo', logo: sponsorTS }, 
+    { name: 'TS Publications', logo: sponsorTS }, 
     { name: 'CRACK-ED', logo: sponsor4 },
   ],
   stallPartners: [

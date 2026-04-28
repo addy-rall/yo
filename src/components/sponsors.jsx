@@ -3,10 +3,12 @@ import React, { useState, useEffect } from 'react';
 import sponsor1 from '../assets/stall1.PNG';
 import sponsor2 from '../assets/cent.png';
 import sponsor3 from '../assets/kanga.jpeg';
+import sponsor4 from '../assets/crac.jpeg';
 
 const partners = {
   mainSponsor: [
     { name: 'Centurion Defence Academy', logo: sponsor2 },
+    { name: 'CRACK-ED', logo: sponsor4 },
   ],
   stallPartners: [
     { name: 'The Fancave', logo: sponsor1 },

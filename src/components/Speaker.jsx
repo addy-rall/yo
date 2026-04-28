@@ -221,7 +221,7 @@ export default function UniqueSpeakersPage() {
                     className="ig-btn"
                     style={s.igButton}
                   >
-                    <InstagramIcon />}
+                    <InstagramIcon />
                     Follow on Instagram
                    </a>
                 )}

@@ -18,7 +18,6 @@ const partners = {
 
 export default function Partners() {
   const [isMobile, setIsMobile] = useState(false);
-  const [hoveredId, setHoveredId] = useState(null);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -119,7 +118,6 @@ export default function Partners() {
     },
   };
 
-  // main sponsor gets a bigger frame
   const getFrameSize = (isMain) => {
     if (isMain) {
       return {
@@ -158,15 +156,15 @@ export default function Partners() {
         <span style={styles.redText}>Our</span>Partners
       </h2>
 
-      {/* Sponsors */}
+      {/* Sponsors - EDITED TO STACK VERTICALLY */}
       <h3 style={styles.categoryTitle}>Sponsors</h3>
-      <div style={styles.sponsorCardsRow}>
+      <div style={{ ...styles.sponsorCardsRow, flexDirection: 'column' }}>
         {partners.mainSponsor.map((partner, idx) =>
           renderCard(partner, `main-${idx}`, true)
         )}
       </div>
 
-      {/* Stall Partners */}
+      {/* Stall Partners - REMAINS HORIZONTAL ON DESKTOP */}
       <div style={styles.sectionGap}>
         <h3 style={styles.categoryTitle}>Stall Partners</h3>
         <div style={styles.sponsorCardsRow}>

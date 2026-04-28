@@ -12,7 +12,7 @@ import kyu2 from '../assets/imgg.png'
 import image3 from '../assets/imgsi.png'
 import image4 from '../assets/mm.png'
 // New Asset Imports
-import tsImg from '../assets/ts.png'
+import tsImg from '../assets/tssp.png'
 import rvImg from '../assets/rv.png'
 import dnImg from '../assets/dn.png'
 

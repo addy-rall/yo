@@ -223,6 +223,7 @@ export default function UniqueSpeakersPage() {
                   >
                     {speaker.type === 'linkedin' ? <LinkedInIcon /> : <InstagramIcon />}
                     {speaker.type === 'linkedin' ? 'Connect on LinkedIn' : 'Follow on Instagram'}
+                   </a>
                 )}
               </div>
             </div>

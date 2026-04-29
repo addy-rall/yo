@@ -15,6 +15,7 @@ import image4 from '../assets/mm.png'
 import tsImg from '../assets/tssp.png'
 import rvImg from '../assets/rv.png'
 import dnImg from '../assets/dn.png'
+import imgl from '../assets/imgl.png'
 
 const speakers = [
   { name: 'Dr. Vijendra Chauhan', role: 'Interviewer | Mentor', img: arjunImg, color: '#c0392b', accent: '#e74c3c', initials: 'VC', bio: 'Dr. Vijender Singh Chauhan, widely known as Masijeevi, is a highly respected academician, mentor, and one of the most influential interview experts for civil services aspirants in India.', instagram: 'https://www.instagram.com/masijeevi/', type: 'instagram' },
@@ -31,6 +32,17 @@ const speakers = [
   { name: 'Mr. Tanmay Singhania', role: 'Author | Project Leader', img: tsImg, color: '#2c3e50', accent: '#34495e', initials: 'TS', bio: "Tanmay Singhania is a B.Tech and MBA graduate and currently serves as a Project Leader in data analytics. Beyond his professional role, he is a fiction author who explores the transformative journeys of his characters through inner awakening and self-discovery. Deeply passionate about spiritual literature, he weaves timeless principles into his storytelling, bringing them to life through his novels.", instagram: 'https://www.instagram.com/tanmaynawabofficial/', type: 'instagram' },
   { name: 'Dr. Divyashree Nageswaran', role: 'Founder | Motivator', img: dnImg, color: '#512e5f', accent: '#8e44ad', initials: 'DN', bio: "Dr. Divyashree Nageswaran is a founder, speaker, and entrepreneur with over five years of experience in the textile supply chain. Holding a PhD in Plant Sciences, she began her journey in research before transitioning into entrepreneurship. She reflects on resilience, identity, and the courage it takes to rebuild one’s path.", instagram: 'https://www.instagram.com/divyashreenageswaran/', type: 'instagram' },
   { name: 'Dr. Rakesh Varma', role: 'Ex IAS Officer | Motivator', img: rvImg, color: '#1b4f72', accent: '#2874a6', initials: 'RV', bio: "Dr. Rakesh Varma, Ex-IAS (VR), Uttar Pradesh Cadre, is a distinguished expert in Public Policy and Govt Affairs with over three decades of experience. An alumnus of the Lee Kuan Yew School of Public Policy, he is a successful entrepreneur who developed ESGmitra, a cutting-edge ESG data analytics platform.", instagram: 'https://www.linkedin.com/in/dr-rakesh-varmaias', type: 'linkedin' },
+{ 
+    name: 'Mr. Lokesh Patel', 
+    role: 'Entrepreneur | Industrial Automation', 
+    img: imgl, 
+    color: '#273746', 
+    accent: '#2c3e50', 
+    initials: 'LP', 
+    bio: "Lokesh Patel is a self-made entrepreneur and technology leader at the forefront of automation, robotics, and IIoT. With a background in Electronics and Telecommunication, he has founded multiple organizations including URL Aseptic Automation Inc. His work integrates engineering, IT systems, and Industry 4.0 to create scalable, future-ready operations. He is also an innovator with patented virtual presence technology and a dedicated mentor.", 
+    instagram: 'https://www.linkedin.com/in/lokeshrpatel/', 
+    type: 'linkedin' 
+  },
 ]
 
 const InstagramIcon = () => (

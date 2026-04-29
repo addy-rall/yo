@@ -13,6 +13,7 @@ import image4 from '../assets/mm.png';
 import tsImg from '../assets/tssp.png';
 import rvImg from '../assets/rv.png';
 import dnImg from '../assets/dn.png';
+import imgl from '../assets/imgl.png';
 
 const speakers = [
   { id: '01', name: 'Dr. Vijendra Chauhan', role: 'Interviewer | Mentor',  img: arjunImg, bio: 'Dr. Vijender Singh Chauhan, widely known as Masijeevi, is a highly respected academician, mentor, and one of India’s most influential interview experts for civil services aspirants. He serves as an Associate Professor at the University of Delhi and has guided thousands of students in shaping not just their careers, but their personalities and thought processes. With experience as an interviewer at multiple prestigious platforms including 12+ TEDx talks and Josh Talks, he is known for his deep understanding of human behavior, communication, and real-world intelligence. His insights go beyond academics—focusing on clarity of thought, ethical grounding, and confidence building, which are crucial for success in life and competitive exams. Through his digital presence and mentorship, he has built a strong connection with millions of students across India. His unique approach blends intellectual depth with practical wisdom, making him a powerful voice for today’s youth', color: '#e62b1e', instagram: 'https://www.instagram.com/masijeevi/' },
@@ -28,7 +29,7 @@ const speakers = [
    { id: '11', name: 'Dr. Rakesh Varma', role: 'Ex IAS Officer | Motivator', img: rvImg, bio: "Dr. Rakesh Varma, Ex-IAS (VR), is an expert in Public Policy and Govt Affairs. He is an alumnus of National University of Singapore and the entrepreneur behind ESGmitra.", color: '#e62b1e', instagram: 'https://www.linkedin.com/in/dr-rakesh-varmaias', type: 'linkedin' },
   { id: '12', name: 'Mr. Tanmay Singhania', role: 'Author | Project Leader', img: tsImg, bio: 'Tanmay Singhania is a Project Leader in data analytics and a fiction author who explores transformative journeys and inner awakening through his spiritual novels.', color: '#e62b1e', instagram: 'https://www.instagram.com/tanmaynawabofficial/', type: 'instagram' },
   { id: '13', name: 'Dr. Divyashree Nageswaran', role: 'Founder | Motivator', img: dnImg, bio: "Dr. Divyashree Nageswaran is a founder and entrepreneur with a PhD in Plant Sciences. She reflects on the courage it takes to 'unlearn intelligence' and rebuild one’s path.", color: '#e62b1e', instagram: 'https://www.instagram.com/divyashreenageswaran/', type: 'instagram' },
-  
+  { id: '14', name: 'Mr. Lokesh Patel', role: 'Entrepreneur | Industrial Automation', img: imgl, bio: 'Lokesh Patel is a technology leader at the forefront of automation, robotics, and IIoT. He is the founder of URL Aseptic Automation Inc.', color: '#e62b1e', instagram: 'https://www.linkedin.com/in/lokeshrpatel/', type: 'linkedin' },
 ];
 
 const InstagramIcon = () => (
@@ -213,18 +214,17 @@ export default function UniqueSpeakersPage() {
                 </p>
                 <p style={s.bio}>{speaker.bio}</p>
 
-                {speaker.instagram && (
-                  
-                   <a href={speaker.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ig-btn"
-                    style={s.igButton}
-                  >
-                    <InstagramIcon />
-                    Follow on Instagram
-                   </a>
-                )}
+               {speaker.instagram && (
+  <a href={speaker.instagram}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="ig-btn"
+    style={s.igButton}
+  >
+    {speaker.type === 'linkedin' ? <LinkedInIcon /> : <InstagramIcon />}
+    {speaker.type === 'linkedin' ? 'Connect on LinkedIn' : 'Follow on Instagram'}
+  </a>
+)}
               </div>
             </div>
           );

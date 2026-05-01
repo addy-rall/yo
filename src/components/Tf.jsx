@@ -1,7 +1,7 @@
 import React from 'react';
 
 // ─── IMAGE IMPORTS ───
-// These assume the images are in the same folder or 'src' directory
+import vksinghImg from '../assets/vkjeet.png';
 import  honorImg from '../assets/img4.png';
 import  chiefImg from '../assets/y.png';
 import priyaimg from '../assets/img1.png';
@@ -33,6 +33,12 @@ const GUESTS = [
     name: "Mr. Aditya Ranjan",
     designation: "Honorary Speaker",
     image: priyaimg
+  },
+  {
+    type: "Guest of Honour",
+    name: "Mr. Vikramjeet Singh",
+    designation: "Honorary Speaker",
+    image: vksinghImg
   }
 ];
 

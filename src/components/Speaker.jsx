@@ -14,6 +14,8 @@ import tsImg from '../assets/tssp.png';
 import rvImg from '../assets/rv.png';
 import dnImg from '../assets/dn.png';
 import imgl from '../assets/imgl.png';
+import imgyy from '../assets/img20.png';
+import vkImg from '../assets/vkjeet.png';
 
 const speakers = [
   {
@@ -146,6 +148,26 @@ const speakers = [
     instagram: 'https://www.linkedin.com/in/lokeshrpatel/',
     type: 'linkedin',
   },
+  {
+    id: '15',
+    name: 'Mr. Vikramjeet Singh',
+    role: 'Founder and CEO of Rankers’ Gurukul',
+    img: vkImg,
+    bio: "Vikramjeet Singh is a renowned Reasoning faculty who has guided lakhs of students through the Rankers’ Gurukul YouTube channel as well as its offline centres. Widely respected for his teaching excellence, he has been honored with titles like “Reasoning Guru,” “The Most Popular Gold Faculty,” “Mr. Logical,” and “Highly Skilled Faculty” by various institutions.He began his teaching journey in early 2012 and later founded Rankers’ Gurukul in 2018 with a vision to provide quality education to aspirants. His teaching approach always focuses on relevant, updated, and exam-oriented content. In recognition of his outstanding contribution to education, he has also been honored by the Chief Minister of Haryana with the prestigious “Haryana Gaurav” award, further highlighting his impact and excellence in the field.",
+    color: '#e62b1e',
+    instagram: 'https://www.instagram.com/rankersgurukul/',
+    type: 'instagram',
+  },
+  {
+    id: '16',
+    name: 'Mr. Nikhil Sachan',
+    role: 'Founder | CEO | Speaker | Mentor',
+    img: imgyy,
+    bio: "Nikhil Sachan is an entrepreneur, educationist, podcaster, and social worker whose philosophy emphasizes grassroots change over boardroom decisions. His rural upbringing in Uttar Pradesh instilled discipline and resilience, later reinforced through IIT-JEE preparation and engineering studies. He founded “CareerKick Services” (2019), guiding over a million students, followed by “Ntechzy Pvt. Ltd.” (2021) in digital marketing, “Sapna Healthcare” (2024) for affordable medical consultations, and the “Spotlight with Nikhil” podcast. In 2025, he launched Shri Radhe Krishna Education Society for holistic education. Recognized with awards like IIT Patna Ayur Mahotsava and Mirchi Excellence, he continues to expand his social and educational impact.",
+    color: '#e62b1e',
+    instagram: 'https://nikhilsachan.in/',
+    type: 'instagram',
+  }
 ];
 
 const InstagramIcon = () => (

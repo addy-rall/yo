@@ -4,6 +4,7 @@ import sponsor1 from '../assets/stall1.PNG';
 import sponsor2 from '../assets/cent.png';
 import sponsor3 from '../assets/kanga.jpeg';
 import sponsor4 from '../assets/crac.jpeg';
+import sponsor5 from '../assets/ranker.png';
 // 1. Import the new logo
 import sponsorTS from '../assets/ts.jpg'; 
 
@@ -11,8 +12,10 @@ const partners = {
   mainSponsor: [
     { name: 'Centurion Defence Academy', logo: sponsor2 },
     // 2. Inserted between Centurion and CRACK-ED
+    { name: 'Rankers Gurukul', logo: sponsor5 },
     { name: 'TS Publication', logo: sponsorTS }, 
     { name: 'CRACK-ED', logo: sponsor4 },
+    
   ],
   stallPartners: [
     { name: 'The Fancave', logo: sponsor1 },

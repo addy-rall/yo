@@ -4,7 +4,6 @@ import React from 'react';
 import vksinghImg from '../assets/vkjeet.png';
 import  honorImg from '../assets/img4.png';
 import  chiefImg from '../assets/y.png';
-import priyaimg from '../assets/img1.png';
 import who from '../assets/ho.png';
 
 const GUESTS = [
@@ -27,13 +26,7 @@ const GUESTS = [
     designation: "Honorary Speaker",
     image: who
   },
- 
-  {
-    type: "Guest of Honour",
-    name: "Mr. Aditya Ranjan",
-    designation: "Honorary Speaker",
-    image: priyaimg
-  },
+
   {
     type: "Guest of Honour",
     name: "Mr. Vikramjeet Singh",

@@ -16,6 +16,8 @@ import tsImg from '../assets/tssp.png'
 import rvImg from '../assets/rv.png'
 import dnImg from '../assets/dn.png'
 import imgl from '../assets/imgl.png'
+import imgl2 from '../assets/img20.png'
+import imgl3 from '../assets/vkjeet.png'
 
 const speakers = [
   { name: 'Dr. Vijendra Chauhan', role: 'Interviewer | Mentor', img: arjunImg, color: '#c0392b', accent: '#e74c3c', initials: 'VC', bio: 'Dr. Vijender Singh Chauhan, widely known as Masijeevi, is a highly respected academician, mentor, and one of the most influential interview experts for civil services aspirants in India.', instagram: 'https://www.instagram.com/masijeevi/', type: 'instagram' },
@@ -43,6 +45,26 @@ const speakers = [
     instagram: 'https://www.linkedin.com/in/lokeshrpatel/', 
     type: 'linkedin' 
   },
+  { 
+    name: 'Mr. Vikramjeet Singh', 
+    role: 'Founder and CEO of Rankers’ Gurukul', 
+    img: imgl3, 
+    color: '#af8d63', 
+    accent: '#ceb989', 
+    initials: 'VS',
+    bio:'Vikramjeet Singh is a highly respected reasoning educator and founder of Rankers’ Gurukul, known for guiding lakhs of students with his exam-focused teaching and honored with the “Haryana Gaurav” award for his contribution to education.',
+    instagram:'https://www.instagram.com/rankersgurukul/',
+    type:'instagram'},
+    { 
+    name: 'Mr. Nikhil Sachan', 
+    role: 'Founder | CEO | Speaker | Mentor', 
+    img: imgl2, 
+    color: '#a58097', 
+    accent: '#8598aa', 
+    initials: 'NS',
+    bio:'Nikhil Sachan is an entrepreneur and educationist who has impacted over a million students through ventures like CareerKick Services while advancing social change through education, healthcare, and digital initiatives.',
+   instagram:'https://nikhilsachan.in/',
+    type:'instagram'},
 ]
 
 const InstagramIcon = () => (
